@@ -1,0 +1,15 @@
+PODS:
+  - SideMenu (1.2.1)
+  - SQLite.swift (0.10.1)
+
+DEPENDENCIES:
+  - SideMenu (= 1.2.1)
+  - SQLite.swift (= 0.10.1)
+
+SPEC CHECKSUMS:
+  SideMenu: d38e42ab18a5c0875a77cfec7e7cecea72a69518
+  SQLite.swift: 6a6e4b034efc317ce4e203b6af2d3024fee2b570
+
+PODFILE CHECKSUM: 543aa0518138661196e2b7adcf5f09b6fba2a406
+
+COCOAPODS: 1.2.0
