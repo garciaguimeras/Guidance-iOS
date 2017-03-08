@@ -1,18 +1,12 @@
 PODS:
-  - JTAppleCalendar (6.1.0)
-  - SideMenu (1.2.1)
   - SQLite.swift (0.10.1)
 
 DEPENDENCIES:
-  - JTAppleCalendar (= 6.1)
-  - SideMenu (= 1.2.1)
   - SQLite.swift (= 0.10.1)
 
 SPEC CHECKSUMS:
-  JTAppleCalendar: f8fdb66cab3a89ff426f1a662a8ac5db125a0394
-  SideMenu: d38e42ab18a5c0875a77cfec7e7cecea72a69518
   SQLite.swift: 6a6e4b034efc317ce4e203b6af2d3024fee2b570
 
-PODFILE CHECKSUM: 2dd4993f164c7657a439ac8c417f16fa19d18174
+PODFILE CHECKSUM: 41ad77923507e7b7f888368e87935f679b5cf987
 
 COCOAPODS: 1.2.0
