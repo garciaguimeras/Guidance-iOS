@@ -114,11 +114,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="ClientCell" textLabel="4Tn-NR-7lg" detailTextLabel="58L-T7-G4j" style="IBUITableViewCellStyleSubtitle" id="9dE-qT-jhb">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClientCell" textLabel="4Tn-NR-7lg" detailTextLabel="58L-T7-G4j" style="IBUITableViewCellStyleSubtitle" id="9dE-qT-jhb">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9dE-qT-jhb" id="35c-4Q-oai">
-                                    <rect key="frame" x="0.0" y="0.0" width="328" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Tn-NR-7lg">
@@ -328,11 +328,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="ExpensesCell" textLabel="Xvj-AA-T3V" detailTextLabel="UdJ-Us-sJ5" style="IBUITableViewCellStyleSubtitle" id="U8p-9T-nTw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ExpensesCell" textLabel="Xvj-AA-T3V" detailTextLabel="UdJ-Us-sJ5" style="IBUITableViewCellStyleSubtitle" id="U8p-9T-nTw">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U8p-9T-nTw" id="z41-3p-seK">
-                                    <rect key="frame" x="0.0" y="0.0" width="328" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xvj-AA-T3V">
@@ -388,11 +388,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" textLabel="Bha-Sh-SI9" detailTextLabel="tVg-cB-FHi" style="IBUITableViewCellStyleSubtitle" id="zah-s3-j30">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TourCell" textLabel="Bha-Sh-SI9" detailTextLabel="tVg-cB-FHi" style="IBUITableViewCellStyleSubtitle" id="zah-s3-j30">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zah-s3-j30" id="279-ZF-kfI">
-                                    <rect key="frame" x="0.0" y="0.0" width="328" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bha-Sh-SI9">
@@ -411,6 +411,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="UgC-De-NYB" kind="presentation" identifier="editTour" id="KRA-a7-ofm"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -426,7 +429,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VcK-hM-tj2">
                             <connections>
-                                <segue destination="UgC-De-NYB" kind="presentation" id="e7u-YQ-yHa"/>
+                                <segue destination="UgC-De-NYB" kind="presentation" identifier="addTour" id="e7u-YQ-yHa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -580,32 +583,71 @@
         <!--Datos del Tour-->
         <scene sceneID="B4Z-lI-1fK">
             <objects>
-                <tableViewController title="Datos del Tour" id="JiN-JL-6Jj" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hLD-1L-bQ9">
+                <tableViewController title="Datos del Tour" id="JiN-JL-6Jj" customClass="TourDetailViewController" customModule="Guidance" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="hLD-1L-bQ9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Qup-Ay-BOd">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qup-Ay-BOd" id="hzE-IY-g4h">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="4b2-hU-C6i">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Qup-Ay-BOd">
+                                        <rect key="frame" x="0.0" y="99" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qup-Ay-BOd" id="hzE-IY-g4h">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nombre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cIa-l2-NTI">
+                                                    <rect key="frame" x="8" y="8" width="359" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="49g-s0-L9y">
+                                        <rect key="frame" x="0.0" y="143" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="49g-s0-L9y" id="HvF-pF-3m2">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Descripcion" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TB9-Qs-WQv">
+                                                    <rect key="frame" x="8" y="8" width="359" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="JiN-JL-6Jj" id="PC9-cl-7cb"/>
                             <outlet property="delegate" destination="JiN-JL-6Jj" id="geH-0k-rJY"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Datos del tour" id="Ogb-mb-66e">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6Ip-yi-bwC"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="U27-1t-jjw"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6Ip-yi-bwC">
+                            <connections>
+                                <segue destination="cDM-jP-aKA" kind="unwind" unwindAction="cancelToTourTableViewController:" id="G1Y-PW-07b"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="U27-1t-jjw">
+                            <connections>
+                                <segue destination="cDM-jP-aKA" kind="unwind" identifier="saveTourDetail" unwindAction="saveTourDetail:" id="ze0-Oj-1s6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="TB9-Qs-WQv" id="Oql-Zm-vVR"/>
+                        <outlet property="nameTextField" destination="cIa-l2-NTI" id="rsC-OQ-6Yu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E2I-8M-zku" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cDM-jP-aKA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4198.5" y="1348.5"/>
         </scene>
@@ -666,7 +708,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4Ga-OQ-lAD"/>
-        <segue reference="cHz-7k-NSM"/>
+        <segue reference="ryn-vz-02C"/>
+        <segue reference="E0S-wg-MYf"/>
+        <segue reference="e7u-YQ-yHa"/>
     </inferredMetricsTieBreakers>
 </document>
