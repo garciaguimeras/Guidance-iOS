@@ -71,4 +71,35 @@ class ClientTable: DbContext {
         return result
     }
     
+    func addClient(client: Client) {
+        let insert = table.insert(
+            name <- client.name,
+            country <- client.country,
+            ages <- client.ages,
+            meetPlace <- client.meetPlace,
+            totalPersons <- client.totalPersons,
+            comments <- client.comments
+        )
+        try! db.run(insert)
+    }
+    
+    func updateClient(client: Client) {
+        let row = table.filter(id == client.id)
+        let update = row.update(
+            name <- client.name,
+            country <- client.country,
+            ages <- client.ages,
+            meetPlace <- client.meetPlace,
+            totalPersons <- client.totalPersons,
+            comments <- client.comments
+        )
+        try! db.run(update)
+    }
+    
+    func deleteClient(client: Client) {
+        let row = table.filter(id == client.id)
+        let delete = row.delete()
+        try! db.run(delete)
+    }
+    
 }
