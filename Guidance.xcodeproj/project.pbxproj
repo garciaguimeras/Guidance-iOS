@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		592BECFA1E742EDB00DD10C9 /* ExpensesTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BECF91E742EDB00DD10C9 /* ExpensesTable.swift */; };
+		592BED021E743B0900DD10C9 /* ExpensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BED011E743B0900DD10C9 /* ExpensesTableViewController.swift */; };
+		592BED041E743E4300DD10C9 /* ExpensesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BED031E743E4300DD10C9 /* ExpensesDetailViewController.swift */; };
+		594377C21E748BE800D0E78B /* GuidanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377C11E748BE800D0E78B /* GuidanceTableViewController.swift */; };
+		594377C41E7490F300D0E78B /* TourTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377C31E7490F300D0E78B /* TourTable.swift */; };
+		594377CB1E7496FB00D0E78B /* TourTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377CA1E7496FB00D0E78B /* TourTableViewController.swift */; };
+		594377CD1E74974100D0E78B /* TourDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377CC1E74974100D0E78B /* TourDetailViewController.swift */; };
 		5950632B1E72ED4400AD4D4B /* ClientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950632A1E72ED4400AD4D4B /* ClientDetailViewController.swift */; };
 		598981A61E705F420073C9DA /* ClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598981A51E705F420073C9DA /* ClientsTableViewController.swift */; };
 		59B760AC1E6DF6B7003C3FD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B760AB1E6DF6B7003C3FD8 /* AppDelegate.swift */; };
@@ -23,6 +29,12 @@
 /* Begin PBXFileReference section */
 		5255C2AB3D5741EA415BB95F /* Pods_Guidance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Guidance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		592BECF91E742EDB00DD10C9 /* ExpensesTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesTable.swift; sourceTree = "<group>"; };
+		592BED011E743B0900DD10C9 /* ExpensesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesTableViewController.swift; sourceTree = "<group>"; };
+		592BED031E743E4300DD10C9 /* ExpensesDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesDetailViewController.swift; sourceTree = "<group>"; };
+		594377C11E748BE800D0E78B /* GuidanceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceTableViewController.swift; sourceTree = "<group>"; };
+		594377C31E7490F300D0E78B /* TourTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourTable.swift; sourceTree = "<group>"; };
+		594377CA1E7496FB00D0E78B /* TourTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourTableViewController.swift; sourceTree = "<group>"; };
+		594377CC1E74974100D0E78B /* TourDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourDetailViewController.swift; sourceTree = "<group>"; };
 		5950632A1E72ED4400AD4D4B /* ClientDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientDetailViewController.swift; sourceTree = "<group>"; };
 		598981A51E705F420073C9DA /* ClientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsTableViewController.swift; sourceTree = "<group>"; };
 		59B760A81E6DF6B7003C3FD8 /* Guidance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guidance.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +70,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		592BECFB1E7432D200DD10C9 /* ClientsUI */ = {
+			isa = PBXGroup;
+			children = (
+				5950632A1E72ED4400AD4D4B /* ClientDetailViewController.swift */,
+				598981A51E705F420073C9DA /* ClientsTableViewController.swift */,
+			);
+			name = ClientsUI;
+			sourceTree = "<group>";
+		};
+		592BECFC1E74330D00DD10C9 /* ExpensesUI */ = {
+			isa = PBXGroup;
+			children = (
+				592BED011E743B0900DD10C9 /* ExpensesTableViewController.swift */,
+				592BED031E743E4300DD10C9 /* ExpensesDetailViewController.swift */,
+			);
+			name = ExpensesUI;
+			sourceTree = "<group>";
+		};
+		594377C01E748BC700D0E78B /* GuidanceUI */ = {
+			isa = PBXGroup;
+			children = (
+				594377C11E748BE800D0E78B /* GuidanceTableViewController.swift */,
+			);
+			name = GuidanceUI;
+			sourceTree = "<group>";
+		};
+		594377C51E74962A00D0E78B /* TourUI */ = {
+			isa = PBXGroup;
+			children = (
+				594377CA1E7496FB00D0E78B /* TourTableViewController.swift */,
+				594377CC1E74974100D0E78B /* TourDetailViewController.swift */,
+			);
+			name = TourUI;
+			sourceTree = "<group>";
+		};
 		59B7609F1E6DF6B7003C3FD8 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +126,10 @@
 		59B760AA1E6DF6B7003C3FD8 /* Guidance */ = {
 			isa = PBXGroup;
 			children = (
+				594377C51E74962A00D0E78B /* TourUI */,
+				594377C01E748BC700D0E78B /* GuidanceUI */,
+				592BECFC1E74330D00DD10C9 /* ExpensesUI */,
+				592BECFB1E7432D200DD10C9 /* ClientsUI */,
 				59EBF56C1E6FB80E00177E92 /* Models */,
 				59B760AB1E6DF6B7003C3FD8 /* AppDelegate.swift */,
 				59B760AD1E6DF6B7003C3FD8 /* ViewController.swift */,
@@ -86,8 +137,6 @@
 				59B760B21E6DF6B7003C3FD8 /* Assets.xcassets */,
 				59B760B41E6DF6B7003C3FD8 /* LaunchScreen.storyboard */,
 				59B760B71E6DF6B7003C3FD8 /* Info.plist */,
-				598981A51E705F420073C9DA /* ClientsTableViewController.swift */,
-				5950632A1E72ED4400AD4D4B /* ClientDetailViewController.swift */,
 			);
 			path = Guidance;
 			sourceTree = "<group>";
@@ -98,6 +147,7 @@
 				59EBF56D1E6FB83F00177E92 /* ClientTable.swift */,
 				59EBF56F1E6FB8D100177E92 /* DbContext.swift */,
 				592BECF91E742EDB00DD10C9 /* ExpensesTable.swift */,
+				594377C31E7490F300D0E78B /* TourTable.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -233,13 +283,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				594377C41E7490F300D0E78B /* TourTable.swift in Sources */,
+				594377CB1E7496FB00D0E78B /* TourTableViewController.swift in Sources */,
 				59B760AE1E6DF6B7003C3FD8 /* ViewController.swift in Sources */,
 				59EBF5701E6FB8D100177E92 /* DbContext.swift in Sources */,
+				592BED021E743B0900DD10C9 /* ExpensesTableViewController.swift in Sources */,
 				59B760AC1E6DF6B7003C3FD8 /* AppDelegate.swift in Sources */,
 				592BECFA1E742EDB00DD10C9 /* ExpensesTable.swift in Sources */,
+				592BED041E743E4300DD10C9 /* ExpensesDetailViewController.swift in Sources */,
 				598981A61E705F420073C9DA /* ClientsTableViewController.swift in Sources */,
+				594377CD1E74974100D0E78B /* TourDetailViewController.swift in Sources */,
 				5950632B1E72ED4400AD4D4B /* ClientDetailViewController.swift in Sources */,
 				59EBF56E1E6FB83F00177E92 /* ClientTable.swift in Sources */,
+				594377C21E748BE800D0E78B /* GuidanceTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

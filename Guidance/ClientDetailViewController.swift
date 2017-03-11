@@ -10,6 +10,7 @@ import UIKit
 
 class ClientDetailViewController: UITableViewController {
     
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
     @IBOutlet weak var agesTextField: UITextField!

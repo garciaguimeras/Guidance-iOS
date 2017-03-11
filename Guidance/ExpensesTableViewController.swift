@@ -1,18 +1,18 @@
 //
-//  ClientsTableViewController.swift
+//  ExpensesTableViewController.swift
 //  Guidance
 //
-//  Created by Noel on 3/8/17.
+//  Created by Noel on 3/11/17.
 //
 //
 
 import UIKit
 
-class ClientsTableViewController: UITableViewController {
-    
-    var clientTable = ClientTable()
-    var clients: [Client]?
+class ExpensesTableViewController: UITableViewController {
 
+    var expensesTable = ExpensesTable()
+    var expenses: [Expenses]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +22,7 @@ class ClientsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        clients = clientTable.getClients()
+        expenses = expensesTable.getExpenses()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,20 +33,22 @@ class ClientsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clients!.count
+        // #warning Incomplete implementation, return the number of rows
+        return expenses!.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ClientCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("ExpensesCell", forIndexPath: indexPath)
 
-        let client = clients![indexPath.row] as Client
-        cell.textLabel?.text = client.name
-        cell.detailTextLabel?.text = "Hospedaje: \(client.meetPlace)"
-
+        let exp = expenses![indexPath.row] as Expenses
+        cell.textLabel?.text = exp.description
+        cell.detailTextLabel?.text = "$\(exp.amount) el dia \(exp.date)"
+        
         return cell
     }
 
@@ -61,9 +63,9 @@ class ClientsTableViewController: UITableViewController {
         if editingStyle == .Delete {
             // remove!
             let row = indexPath.row
-            let client = clients![row]
-            clientTable.deleteClient(client)
-            clients = clientTable.getClients()
+            let exp = expenses![row]
+            expensesTable.deleteExpenses(exp)
+            expenses = expensesTable.getExpenses()
             // Delete the row from the data source
             //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             tableView.reloadData()
@@ -91,40 +93,39 @@ class ClientsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "editClient" {
+        if segue.identifier == "editExpenses" {
             let navViewController = segue.destinationViewController as? UINavigationController
-            let viewController = navViewController!.viewControllers[0] as? ClientDetailViewController
+            let viewController = navViewController!.viewControllers[0] as? ExpensesDetailViewController
             let cell = sender as? UITableViewCell
             let row = tableView.indexPathForCell(cell!)!.row
-            viewController!.client = clients![row]
+            viewController!.exp = expenses![row]
         }
     }
     
     // MARK: - Methods
     
-    @IBAction func cancelToClientsTableViewController(segue: UIStoryboardSegue) {
+    @IBAction func cancelToExpensesTableViewController(segue: UIStoryboardSegue) {
     }
     
-    @IBAction func saveClientDetail(segue: UIStoryboardSegue) {
-        if let viewController = segue.sourceViewController as? ClientDetailViewController {
-            if let client = viewController.client {
-                if client.id == 0 {
+    @IBAction func saveExpensesDetail(segue: UIStoryboardSegue) {
+        if let viewController = segue.sourceViewController as? ExpensesDetailViewController {
+            if let exp = viewController.exp {
+                if exp.id == 0 {
                     // insert!
-                    clientTable.addClient(client)
-                    clients = clientTable.getClients()
+                    expensesTable.addExpenses(exp)
+                    expenses = expensesTable.getExpenses()
                     // udpate the table view
-                    let index = NSIndexPath(forRow: clients!.count - 1, inSection: 0)
-                    tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)
-                }
+                    let index = NSIndexPath(forRow: expenses!.count - 1, inSection: 0)
+                    tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)                }
                 else {
                     // update!
-                    clientTable.updateClient(client)
-                    clients = clientTable.getClients()
+                    expensesTable.updateExpenses(exp);
+                    expenses = expensesTable.getExpenses()
                     // refresh
                     tableView.reloadData()
                 }
             }
         }
     }
-    
+
 }
