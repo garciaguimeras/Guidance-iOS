@@ -66,4 +66,9 @@ class ClientDetailViewController: UITableViewController {
         }
     }
     
+    // MARK: - Methods
+    
+    @IBAction func cancelToClientDetailViewController(segue: UIStoryboardSegue) {
+    }
+    
 }
