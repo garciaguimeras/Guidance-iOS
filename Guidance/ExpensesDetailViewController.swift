@@ -12,7 +12,9 @@ class ExpensesDetailViewController: UITableViewController {
     
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var dateTableViewCell: UITableViewCell!
     
+    var date: NSDate?
     var exp: Expenses?
 
     override func viewDidLoad() {
@@ -24,10 +26,17 @@ class ExpensesDetailViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        date = NSDate()
+        
         if exp != nil {
             descriptionTextField.text = exp!.description
             amountTextField.text = String(exp!.amount)
+            date = exp!.date
         }
+        
+        let df = NSDateFormatter()
+        df.dateFormat = "dd/MM/yyyy"
+        dateTableViewCell.detailTextLabel!.text = df.stringFromDate(date!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,8 +59,24 @@ class ExpensesDetailViewController: UITableViewController {
             
             exp?.description = descriptionTextField.text!
             exp?.amount = Double(amountTextField.text!)!
-            exp?.date = NSDate()
+            exp?.date = date
         }
+        
+        if segue.identifier == "setExpensesDate" {
+            let navViewController = segue.destinationViewController as? UINavigationController
+            let viewController = navViewController!.viewControllers[0] as? ExpensesDateViewController
+            viewController!.date = date!
+        }
+    }
+    
+    // MARK: - Methods
+    
+    @IBAction func updateExpensesDate(segue: UIStoryboardSegue) {
+        let viewController = segue.sourceViewController as? ExpensesDateViewController
+        date = viewController!.date
+        let df = NSDateFormatter()
+        df.dateFormat = "dd/MM/yyyy"
+        dateTableViewCell.detailTextLabel!.text = df.stringFromDate(date!)
     }
 
 }

@@ -37,10 +37,10 @@ class TourTable: DbContext {
             })
     }
     
-    func getTours() -> [Tour] {
+    func getAllToursFromTable(rows: Table) -> [Tour] {
         var result: [Tour] = []
         
-        for item in try! db.prepare(table) {
+        for item in try! db.prepare(rows) {
             let tour = Tour()
             tour.id = item[id]
             tour.name = item[name]
@@ -49,6 +49,19 @@ class TourTable: DbContext {
         }
         
         return result
+    }
+    
+    func getTours() -> [Tour] {
+        return getAllToursFromTable(table)
+    }
+    
+    func getTourById(tourId: Int64) -> Tour? {
+        let row = table.filter(id == tourId)
+        let tours = getAllToursFromTable(row)
+        if tours.count == 0 {
+            return nil
+        }
+        return tours[0]
     }
     
     func addTour(tour: Tour) {
@@ -70,6 +83,13 @@ class TourTable: DbContext {
     
     func deleteTour(tour: Tour) {
         let row = table.filter(id == tour.id)
+        
+        let ctTable = ClientTourTable()
+        let tuples = ctTable.getClientToursByTour(tour.id)
+        for item in tuples {
+            ctTable.deleteClientTour(item)
+        }
+        
         let delete = row.delete()
         try! db.run(delete)
     }

@@ -1,18 +1,18 @@
 //
-//  ExpensesTableViewController.swift
+//  ClientTourTourViewController.swift
 //  Guidance
 //
-//  Created by Noel on 3/11/17.
+//  Created by Noel on 3/15/17.
 //
 //
 
 import UIKit
 
-class ExpensesTableViewController: UITableViewController {
-
-    var expensesTable = ExpensesTable()
-    var expenses: [Expenses]?
+class ClientTourTourViewController: UITableViewController {
     
+    var tours: [Tour]?
+    var selectedTour: Tour?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +22,7 @@ class ExpensesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        expenses = expensesTable.getExpenses()
+        tours = TourTable().getTours()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,42 +39,43 @@ class ExpensesTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return expenses!.count
+        return tours!.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ExpensesCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("SelectTourCell", forIndexPath: indexPath)
 
-        let exp = expenses![indexPath.row] as Expenses
-        
-        cell.textLabel?.text = exp.description
-        
-        let df = NSDateFormatter()
-        df.dateFormat = "dd/MM/yyyy"
-        cell.detailTextLabel?.text = "$\(exp.amount) el dia \(df.stringFromDate(exp.date!))"
-        
+        // Configure the cell...
+        let row = indexPath.row
+        let tour = tours![row]
+        cell.textLabel!.text = tour.name
+        cell.accessoryType = .None
+        if tour.id == selectedTour?.id {
+            cell.accessoryType = .Checkmark
+        }
+
         return cell
     }
 
+    /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
+    */
 
+    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // remove!
-            let row = indexPath.row
-            let exp = expenses![row]
-            expensesTable.deleteExpenses(exp)
-            expenses = expensesTable.getExpenses()
             // Delete the row from the data source
-            //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            tableView.reloadData()
-        }
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
     }
+    */
 
     /*
     // Override to support rearranging the table view.
@@ -90,46 +91,25 @@ class ExpensesTableViewController: UITableViewController {
         return true
     }
     */
-
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let row = indexPath.row
+        let newSelected = tours![row]
+        selectedTour = selectedTour?.id != newSelected.id ? newSelected : nil
+        tableView.reloadData()
+    }
+ 
+ 
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "editExpenses" {
-            let navViewController = segue.destinationViewController as? UINavigationController
-            let viewController = navViewController!.viewControllers[0] as? ExpensesDetailViewController
-            let cell = sender as? UITableViewCell
-            let row = tableView.indexPathForCell(cell!)!.row
-            viewController!.exp = expenses![row]
-        }
     }
-    
-    // MARK: - Methods
-    
-    @IBAction func cancelToExpensesTableViewController(segue: UIStoryboardSegue) {
-    }
-    
-    @IBAction func saveExpensesDetail(segue: UIStoryboardSegue) {
-        if let viewController = segue.sourceViewController as? ExpensesDetailViewController {
-            if let exp = viewController.exp {
-                if exp.id == 0 {
-                    // insert!
-                    expensesTable.addExpenses(exp)
-                    expenses = expensesTable.getExpenses()
-                    // udpate the table view
-                    let index = NSIndexPath(forRow: expenses!.count - 1, inSection: 0)
-                    tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)                }
-                else {
-                    // update!
-                    expensesTable.updateExpenses(exp);
-                    expenses = expensesTable.getExpenses()
-                    // refresh
-                    tableView.reloadData()
-                }
-            }
-        }
-    }
+    */
 
 }

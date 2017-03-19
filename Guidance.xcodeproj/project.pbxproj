@@ -15,12 +15,26 @@
 		594377CB1E7496FB00D0E78B /* TourTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377CA1E7496FB00D0E78B /* TourTableViewController.swift */; };
 		594377CD1E74974100D0E78B /* TourDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377CC1E74974100D0E78B /* TourDetailViewController.swift */; };
 		5950632B1E72ED4400AD4D4B /* ClientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950632A1E72ED4400AD4D4B /* ClientDetailViewController.swift */; };
+		59562E091E7975E600E6A5F6 /* ClientTourTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59562E081E7975E600E6A5F6 /* ClientTourTableViewController.swift */; };
+		59562E0B1E79761300E6A5F6 /* ClientTourDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59562E0A1E79761300E6A5F6 /* ClientTourDetailViewController.swift */; };
+		59562E0F1E79CCBB00E6A5F6 /* ClientTourDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59562E0E1E79CCBB00E6A5F6 /* ClientTourDateViewController.swift */; };
+		59562E111E79DCB700E6A5F6 /* ClientTourTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59562E101E79DCB700E6A5F6 /* ClientTourTourViewController.swift */; };
+		5970A5CE1E75F90A00852BEA /* ExpensesDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5970A5CD1E75F90A00852BEA /* ExpensesDateViewController.swift */; };
 		598981A61E705F420073C9DA /* ClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598981A51E705F420073C9DA /* ClientsTableViewController.swift */; };
 		59B760AC1E6DF6B7003C3FD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B760AB1E6DF6B7003C3FD8 /* AppDelegate.swift */; };
 		59B760AE1E6DF6B7003C3FD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B760AD1E6DF6B7003C3FD8 /* ViewController.swift */; };
 		59B760B11E6DF6B7003C3FD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B760AF1E6DF6B7003C3FD8 /* Main.storyboard */; };
 		59B760B31E6DF6B7003C3FD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59B760B21E6DF6B7003C3FD8 /* Assets.xcassets */; };
 		59B760B61E6DF6B7003C3FD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B760B41E6DF6B7003C3FD8 /* LaunchScreen.storyboard */; };
+		59D6E3BA1E7C412200807C5C /* ClientTourGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D6E3B91E7C412200807C5C /* ClientTourGuideViewController.swift */; };
+		59D6E3BC1E7C43C000807C5C /* ClientTourDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D6E3BB1E7C43C000807C5C /* ClientTourDriverViewController.swift */; };
+		59DA4D351E757FED00B50A2E /* GuideTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D341E757FED00B50A2E /* GuideTable.swift */; };
+		59DA4D371E75832B00B50A2E /* DriverTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D361E75832B00B50A2E /* DriverTable.swift */; };
+		59DA4D391E7586E800B50A2E /* ClientTourTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D381E7586E800B50A2E /* ClientTourTable.swift */; };
+		59DA4D3C1E758CBD00B50A2E /* GuideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D3B1E758CBD00B50A2E /* GuideTableViewController.swift */; };
+		59DA4D3E1E758CD300B50A2E /* GuideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D3D1E758CD300B50A2E /* GuideDetailViewController.swift */; };
+		59DA4D411E759ABF00B50A2E /* DriverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D401E759ABF00B50A2E /* DriverTableViewController.swift */; };
+		59DA4D431E759ACD00B50A2E /* DriverDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D421E759ACD00B50A2E /* DriverDetailViewController.swift */; };
 		59EBF56E1E6FB83F00177E92 /* ClientTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBF56D1E6FB83F00177E92 /* ClientTable.swift */; };
 		59EBF5701E6FB8D100177E92 /* DbContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBF56F1E6FB8D100177E92 /* DbContext.swift */; };
 		F098E58DECA8E5EC402475E1 /* Pods_Guidance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5255C2AB3D5741EA415BB95F /* Pods_Guidance.framework */; };
@@ -36,6 +50,11 @@
 		594377CA1E7496FB00D0E78B /* TourTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourTableViewController.swift; sourceTree = "<group>"; };
 		594377CC1E74974100D0E78B /* TourDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourDetailViewController.swift; sourceTree = "<group>"; };
 		5950632A1E72ED4400AD4D4B /* ClientDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientDetailViewController.swift; sourceTree = "<group>"; };
+		59562E081E7975E600E6A5F6 /* ClientTourTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourTableViewController.swift; sourceTree = "<group>"; };
+		59562E0A1E79761300E6A5F6 /* ClientTourDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourDetailViewController.swift; sourceTree = "<group>"; };
+		59562E0E1E79CCBB00E6A5F6 /* ClientTourDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourDateViewController.swift; sourceTree = "<group>"; };
+		59562E101E79DCB700E6A5F6 /* ClientTourTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourTourViewController.swift; sourceTree = "<group>"; };
+		5970A5CD1E75F90A00852BEA /* ExpensesDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesDateViewController.swift; sourceTree = "<group>"; };
 		598981A51E705F420073C9DA /* ClientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsTableViewController.swift; sourceTree = "<group>"; };
 		59B760A81E6DF6B7003C3FD8 /* Guidance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guidance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B760AB1E6DF6B7003C3FD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +63,15 @@
 		59B760B21E6DF6B7003C3FD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59B760B51E6DF6B7003C3FD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		59B760B71E6DF6B7003C3FD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59D6E3B91E7C412200807C5C /* ClientTourGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourGuideViewController.swift; sourceTree = "<group>"; };
+		59D6E3BB1E7C43C000807C5C /* ClientTourDriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourDriverViewController.swift; sourceTree = "<group>"; };
+		59DA4D341E757FED00B50A2E /* GuideTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideTable.swift; sourceTree = "<group>"; };
+		59DA4D361E75832B00B50A2E /* DriverTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverTable.swift; sourceTree = "<group>"; };
+		59DA4D381E7586E800B50A2E /* ClientTourTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourTable.swift; sourceTree = "<group>"; };
+		59DA4D3B1E758CBD00B50A2E /* GuideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideTableViewController.swift; sourceTree = "<group>"; };
+		59DA4D3D1E758CD300B50A2E /* GuideDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideDetailViewController.swift; sourceTree = "<group>"; };
+		59DA4D401E759ABF00B50A2E /* DriverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverTableViewController.swift; sourceTree = "<group>"; };
+		59DA4D421E759ACD00B50A2E /* DriverDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverDetailViewController.swift; sourceTree = "<group>"; };
 		59EBF56D1E6FB83F00177E92 /* ClientTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTable.swift; sourceTree = "<group>"; };
 		59EBF56F1E6FB8D100177E92 /* DbContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbContext.swift; sourceTree = "<group>"; };
 		A779E67AA3BAFB1C7AD01D27 /* Pods-Guidance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guidance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Guidance/Pods-Guidance.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +112,7 @@
 			children = (
 				592BED011E743B0900DD10C9 /* ExpensesTableViewController.swift */,
 				592BED031E743E4300DD10C9 /* ExpensesDetailViewController.swift */,
+				5970A5CD1E75F90A00852BEA /* ExpensesDateViewController.swift */,
 			);
 			name = ExpensesUI;
 			sourceTree = "<group>";
@@ -103,6 +132,19 @@
 				594377CC1E74974100D0E78B /* TourDetailViewController.swift */,
 			);
 			name = TourUI;
+			sourceTree = "<group>";
+		};
+		59562E071E7975BE00E6A5F6 /* ClientTourUI */ = {
+			isa = PBXGroup;
+			children = (
+				59562E081E7975E600E6A5F6 /* ClientTourTableViewController.swift */,
+				59562E0A1E79761300E6A5F6 /* ClientTourDetailViewController.swift */,
+				59562E0E1E79CCBB00E6A5F6 /* ClientTourDateViewController.swift */,
+				59562E101E79DCB700E6A5F6 /* ClientTourTourViewController.swift */,
+				59D6E3B91E7C412200807C5C /* ClientTourGuideViewController.swift */,
+				59D6E3BB1E7C43C000807C5C /* ClientTourDriverViewController.swift */,
+			);
+			name = ClientTourUI;
 			sourceTree = "<group>";
 		};
 		59B7609F1E6DF6B7003C3FD8 = {
@@ -126,6 +168,9 @@
 		59B760AA1E6DF6B7003C3FD8 /* Guidance */ = {
 			isa = PBXGroup;
 			children = (
+				59562E071E7975BE00E6A5F6 /* ClientTourUI */,
+				59DA4D3F1E759A9800B50A2E /* DriverUI */,
+				59DA4D3A1E758C9900B50A2E /* GuideUI */,
 				594377C51E74962A00D0E78B /* TourUI */,
 				594377C01E748BC700D0E78B /* GuidanceUI */,
 				592BECFC1E74330D00DD10C9 /* ExpensesUI */,
@@ -141,6 +186,24 @@
 			path = Guidance;
 			sourceTree = "<group>";
 		};
+		59DA4D3A1E758C9900B50A2E /* GuideUI */ = {
+			isa = PBXGroup;
+			children = (
+				59DA4D3B1E758CBD00B50A2E /* GuideTableViewController.swift */,
+				59DA4D3D1E758CD300B50A2E /* GuideDetailViewController.swift */,
+			);
+			name = GuideUI;
+			sourceTree = "<group>";
+		};
+		59DA4D3F1E759A9800B50A2E /* DriverUI */ = {
+			isa = PBXGroup;
+			children = (
+				59DA4D401E759ABF00B50A2E /* DriverTableViewController.swift */,
+				59DA4D421E759ACD00B50A2E /* DriverDetailViewController.swift */,
+			);
+			name = DriverUI;
+			sourceTree = "<group>";
+		};
 		59EBF56C1E6FB80E00177E92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +211,9 @@
 				59EBF56F1E6FB8D100177E92 /* DbContext.swift */,
 				592BECF91E742EDB00DD10C9 /* ExpensesTable.swift */,
 				594377C31E7490F300D0E78B /* TourTable.swift */,
+				59DA4D341E757FED00B50A2E /* GuideTable.swift */,
+				59DA4D361E75832B00B50A2E /* DriverTable.swift */,
+				59DA4D381E7586E800B50A2E /* ClientTourTable.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -284,18 +350,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				594377C41E7490F300D0E78B /* TourTable.swift in Sources */,
+				59DA4D3C1E758CBD00B50A2E /* GuideTableViewController.swift in Sources */,
+				59DA4D391E7586E800B50A2E /* ClientTourTable.swift in Sources */,
 				594377CB1E7496FB00D0E78B /* TourTableViewController.swift in Sources */,
 				59B760AE1E6DF6B7003C3FD8 /* ViewController.swift in Sources */,
 				59EBF5701E6FB8D100177E92 /* DbContext.swift in Sources */,
 				592BED021E743B0900DD10C9 /* ExpensesTableViewController.swift in Sources */,
 				59B760AC1E6DF6B7003C3FD8 /* AppDelegate.swift in Sources */,
+				59562E0B1E79761300E6A5F6 /* ClientTourDetailViewController.swift in Sources */,
+				59DA4D3E1E758CD300B50A2E /* GuideDetailViewController.swift in Sources */,
 				592BECFA1E742EDB00DD10C9 /* ExpensesTable.swift in Sources */,
+				59DA4D431E759ACD00B50A2E /* DriverDetailViewController.swift in Sources */,
+				5970A5CE1E75F90A00852BEA /* ExpensesDateViewController.swift in Sources */,
 				592BED041E743E4300DD10C9 /* ExpensesDetailViewController.swift in Sources */,
+				59DA4D411E759ABF00B50A2E /* DriverTableViewController.swift in Sources */,
+				59562E111E79DCB700E6A5F6 /* ClientTourTourViewController.swift in Sources */,
 				598981A61E705F420073C9DA /* ClientsTableViewController.swift in Sources */,
+				59D6E3BC1E7C43C000807C5C /* ClientTourDriverViewController.swift in Sources */,
 				594377CD1E74974100D0E78B /* TourDetailViewController.swift in Sources */,
+				59562E091E7975E600E6A5F6 /* ClientTourTableViewController.swift in Sources */,
 				5950632B1E72ED4400AD4D4B /* ClientDetailViewController.swift in Sources */,
+				59DA4D351E757FED00B50A2E /* GuideTable.swift in Sources */,
 				59EBF56E1E6FB83F00177E92 /* ClientTable.swift in Sources */,
 				594377C21E748BE800D0E78B /* GuidanceTableViewController.swift in Sources */,
+				59DA4D371E75832B00B50A2E /* DriverTable.swift in Sources */,
+				59D6E3BA1E7C412200807C5C /* ClientTourGuideViewController.swift in Sources */,
+				59562E0F1E79CCBB00E6A5F6 /* ClientTourDateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

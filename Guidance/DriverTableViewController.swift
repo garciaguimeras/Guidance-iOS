@@ -1,18 +1,18 @@
 //
-//  ExpensesTableViewController.swift
+//  DriverTableViewController.swift
 //  Guidance
 //
-//  Created by Noel on 3/11/17.
+//  Created by Noel on 3/12/17.
 //
 //
 
 import UIKit
 
-class ExpensesTableViewController: UITableViewController {
-
-    var expensesTable = ExpensesTable()
-    var expenses: [Expenses]?
+class DriverTableViewController: UITableViewController {
     
+    var driverTable = DriverTable()
+    var drivers: [Driver]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +22,7 @@ class ExpensesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        expenses = expensesTable.getExpenses()
+        drivers = driverTable.getDrivers()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,19 +39,15 @@ class ExpensesTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return expenses!.count
+        return drivers!.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ExpensesCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("DriverCell", forIndexPath: indexPath)
 
-        let exp = expenses![indexPath.row] as Expenses
-        
-        cell.textLabel?.text = exp.description
-        
-        let df = NSDateFormatter()
-        df.dateFormat = "dd/MM/yyyy"
-        cell.detailTextLabel?.text = "$\(exp.amount) el dia \(df.stringFromDate(exp.date!))"
+        let driver = drivers![indexPath.row] as Driver
+        cell.textLabel?.text = driver.name
+        cell.detailTextLabel?.text = "\(driver.carType), evaluado con \(driver.rate)"
         
         return cell
     }
@@ -66,10 +62,9 @@ class ExpensesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // remove!
-            let row = indexPath.row
-            let exp = expenses![row]
-            expensesTable.deleteExpenses(exp)
-            expenses = expensesTable.getExpenses()
+            let driver = drivers![indexPath.row]
+            driverTable.deleteDriver(driver)
+            drivers = driverTable.getDrivers()
             // Delete the row from the data source
             //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             tableView.reloadData()
@@ -97,39 +92,39 @@ class ExpensesTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "editExpenses" {
+        if segue.identifier == "editDriver" {
             let navViewController = segue.destinationViewController as? UINavigationController
-            let viewController = navViewController!.viewControllers[0] as? ExpensesDetailViewController
+            let viewController = navViewController!.viewControllers[0] as? DriverDetailViewController
             let cell = sender as? UITableViewCell
             let row = tableView.indexPathForCell(cell!)!.row
-            viewController!.exp = expenses![row]
+            viewController!.driver = drivers![row]
         }
     }
     
     // MARK: - Methods
     
-    @IBAction func cancelToExpensesTableViewController(segue: UIStoryboardSegue) {
+    @IBAction func cancelToDriversTableViewController(segue: UIStoryboardSegue) {
     }
     
-    @IBAction func saveExpensesDetail(segue: UIStoryboardSegue) {
-        if let viewController = segue.sourceViewController as? ExpensesDetailViewController {
-            if let exp = viewController.exp {
-                if exp.id == 0 {
+    @IBAction func saveDriverDetail(segue: UIStoryboardSegue) {
+        if let viewController = segue.sourceViewController as? DriverDetailViewController {
+            if let driver = viewController.driver {
+                if driver.id == 0 {
                     // insert!
-                    expensesTable.addExpenses(exp)
-                    expenses = expensesTable.getExpenses()
+                    driverTable.addDriver(driver)
+                    drivers = driverTable.getDrivers()
                     // udpate the table view
-                    let index = NSIndexPath(forRow: expenses!.count - 1, inSection: 0)
-                    tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)                }
+                    let index = NSIndexPath(forRow: drivers!.count - 1, inSection: 0)
+                    tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+                }
                 else {
                     // update!
-                    expensesTable.updateExpenses(exp);
-                    expenses = expensesTable.getExpenses()
+                    driverTable.updateDriver(driver)
+                    drivers = driverTable.getDrivers()
                     // refresh
                     tableView.reloadData()
                 }
             }
         }
     }
-
 }

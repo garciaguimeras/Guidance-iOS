@@ -110,7 +110,7 @@ class ClientsTableViewController: UITableViewController {
             if let client = viewController.client {
                 if client.id == 0 {
                     // insert!
-                    clientTable.addClient(client)
+                    clientTable.addClient(client, tourList: viewController.tourList!)
                     clients = clientTable.getClients()
                     // udpate the table view
                     let index = NSIndexPath(forRow: clients!.count - 1, inSection: 0)
@@ -118,7 +118,7 @@ class ClientsTableViewController: UITableViewController {
                 }
                 else {
                     // update!
-                    clientTable.updateClient(client)
+                    clientTable.updateClient(client, tourList: viewController.tourList!)
                     clients = clientTable.getClients()
                     // refresh
                     tableView.reloadData()
