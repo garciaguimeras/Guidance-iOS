@@ -26,6 +26,8 @@
 		59B760B11E6DF6B7003C3FD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B760AF1E6DF6B7003C3FD8 /* Main.storyboard */; };
 		59B760B31E6DF6B7003C3FD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59B760B21E6DF6B7003C3FD8 /* Assets.xcassets */; };
 		59B760B61E6DF6B7003C3FD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B760B41E6DF6B7003C3FD8 /* LaunchScreen.storyboard */; };
+		59D2A64C1E7EB82900139323 /* TripTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D2A64B1E7EB82900139323 /* TripTableViewController.swift */; };
+		59D2A64F1E7EC5B000139323 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D2A64E1E7EC5B000139323 /* DateUtils.swift */; };
 		59D6E3BA1E7C412200807C5C /* ClientTourGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D6E3B91E7C412200807C5C /* ClientTourGuideViewController.swift */; };
 		59D6E3BC1E7C43C000807C5C /* ClientTourDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D6E3BB1E7C43C000807C5C /* ClientTourDriverViewController.swift */; };
 		59DA4D351E757FED00B50A2E /* GuideTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D341E757FED00B50A2E /* GuideTable.swift */; };
@@ -63,6 +65,8 @@
 		59B760B21E6DF6B7003C3FD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59B760B51E6DF6B7003C3FD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		59B760B71E6DF6B7003C3FD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59D2A64B1E7EB82900139323 /* TripTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewController.swift; sourceTree = "<group>"; };
+		59D2A64E1E7EC5B000139323 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		59D6E3B91E7C412200807C5C /* ClientTourGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourGuideViewController.swift; sourceTree = "<group>"; };
 		59D6E3BB1E7C43C000807C5C /* ClientTourDriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourDriverViewController.swift; sourceTree = "<group>"; };
 		59DA4D341E757FED00B50A2E /* GuideTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideTable.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 		59B760AA1E6DF6B7003C3FD8 /* Guidance */ = {
 			isa = PBXGroup;
 			children = (
+				59D2A64D1E7EC5A000139323 /* Utils */,
+				59D2A64A1E7EB7E300139323 /* TripUI */,
 				59562E071E7975BE00E6A5F6 /* ClientTourUI */,
 				59DA4D3F1E759A9800B50A2E /* DriverUI */,
 				59DA4D3A1E758C9900B50A2E /* GuideUI */,
@@ -184,6 +190,22 @@
 				59B760B71E6DF6B7003C3FD8 /* Info.plist */,
 			);
 			path = Guidance;
+			sourceTree = "<group>";
+		};
+		59D2A64A1E7EB7E300139323 /* TripUI */ = {
+			isa = PBXGroup;
+			children = (
+				59D2A64B1E7EB82900139323 /* TripTableViewController.swift */,
+			);
+			name = TripUI;
+			sourceTree = "<group>";
+		};
+		59D2A64D1E7EC5A000139323 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				59D2A64E1E7EC5B000139323 /* DateUtils.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		59DA4D3A1E758C9900B50A2E /* GuideUI */ = {
@@ -371,8 +393,10 @@
 				59562E091E7975E600E6A5F6 /* ClientTourTableViewController.swift in Sources */,
 				5950632B1E72ED4400AD4D4B /* ClientDetailViewController.swift in Sources */,
 				59DA4D351E757FED00B50A2E /* GuideTable.swift in Sources */,
+				59D2A64C1E7EB82900139323 /* TripTableViewController.swift in Sources */,
 				59EBF56E1E6FB83F00177E92 /* ClientTable.swift in Sources */,
 				594377C21E748BE800D0E78B /* GuidanceTableViewController.swift in Sources */,
+				59D2A64F1E7EC5B000139323 /* DateUtils.swift in Sources */,
 				59DA4D371E75832B00B50A2E /* DriverTable.swift in Sources */,
 				59D6E3BA1E7C412200807C5C /* ClientTourGuideViewController.swift in Sources */,
 				59562E0F1E79CCBB00E6A5F6 /* ClientTourDateViewController.swift in Sources */,

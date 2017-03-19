@@ -136,6 +136,24 @@ class ClientTourTable: DbContext {
         return getAllFromTable(rows)
     }
     
+    func getClientToursAfterDate(date: NSDate) -> Dictionary<NSDate, [ClientTour]> {
+        var result = Dictionary<NSDate, [ClientTour]>()
+        
+        let paramDate = DateUtils.fixDate(date)
+        let rows = table.filter(self.date >= paramDate).order(self.date)
+        let tripList = getAllFromTable(rows)
+        for item in tripList {
+            let d = DateUtils.fixDate(item.date!)
+            let arr = result[d]
+            if arr == nil {
+                result[d] = []
+            }
+            result[d]!.append(item)
+        }
+        
+        return result
+    }
+    
     func addClientTour(ct: ClientTour) {
         let insert = table.insert(
             clientId <- ct.clientId,

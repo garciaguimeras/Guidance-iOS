@@ -53,11 +53,11 @@ class ClientTable: DbContext {
         })
     }
     
-    func getClients() -> [Client] {
+    func getAllClientsFromTable(rows: Table) -> [Client] {
         var result: [Client] = []
         
-        for item in try! db.prepare(table) {
-           let client = Client()
+        for item in try! db.prepare(rows) {
+            let client = Client()
             client.id = item[id]
             client.name = item[name]
             client.country = item[country]
@@ -69,6 +69,19 @@ class ClientTable: DbContext {
         }
         
         return result
+    }
+    
+    func getClients() -> [Client] {
+        return getAllClientsFromTable(table)
+    }
+    
+    func getClientById(clientId: Int64) -> Client? {
+        let row = table.filter(id == clientId)
+        let clients = getAllClientsFromTable(row)
+        if clients.count == 0 {
+            return nil
+        }
+        return clients[0]
     }
     
     func addClient(client: Client, tourList: [ClientTour]) {
