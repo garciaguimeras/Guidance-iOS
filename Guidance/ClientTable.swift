@@ -84,7 +84,7 @@ class ClientTable: DbContext {
         return clients[0]
     }
     
-    func addClient(client: Client, tourList: [ClientTour]) {
+    func addClient(client: Client) {
         let insert = table.insert(
             name <- client.name,
             country <- client.country,
@@ -93,17 +93,10 @@ class ClientTable: DbContext {
             totalPersons <- client.totalPersons,
             comments <- client.comments
         )
-        let id = try! db.run(insert)
-        
-        let ctTable = ClientTourTable()
-        for ct in tourList {
-            ct.clientId = id
-            ct.id = 0
-            ctTable.addClientTour(ct)
-        }
+        try! db.run(insert)
     }
     
-    func updateClient(client: Client, tourList: [ClientTour]) {
+    func updateClient(client: Client) {
         let row = table.filter(id == client.id)
         let update = row.update(
             name <- client.name,
@@ -114,19 +107,6 @@ class ClientTable: DbContext {
             comments <- client.comments
         )
         try! db.run(update)
-        
-        // rewrite dependencies
-        let ctTable = ClientTourTable()
-        let tuples = ctTable.getClientToursByClient(client.id)
-        for item in tuples {
-            ctTable.deleteClientTour(item)
-        }
-    
-        for ct in tourList {
-            ct.clientId = client.id
-            ct.id = 0
-            ctTable.addClientTour(ct)
-        }
     }
     
     func deleteClient(client: Client) {

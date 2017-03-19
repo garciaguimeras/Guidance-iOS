@@ -23,15 +23,8 @@ class ClientTourTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        if list == nil || list!.count == 0 {
-            if clientId == nil {
-                list = []
-            }
-            else {
-                list = table.getClientToursByClient(clientId!)
-            }
-        }
+
+        list = table.getClientToursByClient(clientId!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,7 +73,9 @@ class ClientTourTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let row = indexPath.row
-            list!.removeAtIndex(row)
+            let ct = list![row]
+            table.deleteClientTour(ct)
+            list = table.getClientToursByClient(clientId!)
             // Delete the row from the data source
             //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             tableView.reloadData()
@@ -125,18 +120,18 @@ class ClientTourTableViewController: UITableViewController {
     @IBAction func saveClientTourDetail(segue: UIStoryboardSegue) {
         if let viewController = segue.sourceViewController as? ClientTourDetailViewController {
             if let ct = viewController.ct {
+                ct.clientId = clientId!
                 if ct.id == 0 {
                     // insert!
-                    
-                    // TODO: Fix this
-                    ct.id = 1
-                    
-                    list!.append(ct)
+                    table.addClientTour(ct)
+                    list = table.getClientToursByClient(clientId!)
                     // udpate the table view
                     let index = NSIndexPath(forRow: list!.count - 1, inSection: 0)
                     tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)                }
                 else {
                     // update!
+                    table.updateClientTour(ct)
+                    list = table.getClientToursByClient(clientId!)
                     // refresh
                     tableView.reloadData()
                 }

@@ -17,7 +17,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="dri-x9-UUa" kind="relationship" relationship="viewControllers" id="4P1-3p-8Gz"/>
+                        <segue destination="Icp-H2-1tm" kind="relationship" relationship="viewControllers" id="4P1-3p-8Gz"/>
                         <segue destination="S72-ra-tqS" kind="relationship" relationship="viewControllers" id="Lau-Ea-It3"/>
                     </connections>
                 </tabBarController>
@@ -214,11 +214,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClientCell" textLabel="4Tn-NR-7lg" detailTextLabel="58L-T7-G4j" style="IBUITableViewCellStyleSubtitle" id="9dE-qT-jhb">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ClientCell" textLabel="4Tn-NR-7lg" detailTextLabel="58L-T7-G4j" style="IBUITableViewCellStyleSubtitle" id="9dE-qT-jhb">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9dE-qT-jhb" id="35c-4Q-oai">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Tn-NR-7lg">
@@ -239,6 +239,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="8nH-Pj-vXq" kind="presentation" identifier="editClient" id="9GP-lF-1Bx"/>
+                                    <segue destination="VVK-XR-NBY" kind="presentation" identifier="showClientTrips" trigger="accessoryAction" id="Ftp-vb-uu1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -366,26 +367,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="tip-kf-dbG" style="IBUITableViewCellStyleDefault" id="ruY-Uf-rbo">
-                                        <rect key="frame" x="0.0" y="363" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ruY-Uf-rbo" id="lzz-2l-EqR">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Viajes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tip-kf-dbG">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="VVK-XR-NBY" kind="presentation" identifier="showClientTrips" id="Ung-cu-Miw"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -478,7 +459,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQA-yV-cQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="99F-b3-z77" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5499.5" y="-264.5"/>
+            <point key="canvasLocation" x="5439.5" y="-672.5"/>
         </scene>
         <!--Detalles del viaje-->
         <scene sceneID="RL7-Qg-d2z">
@@ -788,7 +769,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKA-iz-czL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="se6-mk-x5B" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6774.5" y="-253.5"/>
+            <point key="canvasLocation" x="6598.5" y="-653.5"/>
         </scene>
         <!--Guia del viaje-->
         <scene sceneID="sXm-w9-JKf">
@@ -1302,7 +1283,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripByDateCell" textLabel="9C1-lj-Fnn" detailTextLabel="ta3-s1-oNY" style="IBUITableViewCellStyleSubtitle" id="PEa-eY-pbA">
-                                <rect key="frame" x="0.0" y="50" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PEa-eY-pbA" id="Olg-Gy-3Lp">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1331,11 +1312,11 @@
                             <outlet property="delegate" destination="dri-x9-UUa" id="QzZ-IL-VWK"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Viajes por fecha" id="bpI-9n-ZEu"/>
+                    <navigationItem key="navigationItem" title="Proximos viajes" id="F5U-FW-UuZ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nA2-Zi-pf6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-103.5" y="2290.5"/>
+            <point key="canvasLocation" x="483.5" y="2290.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="F8e-NO-Dmg">
@@ -1406,7 +1387,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ANP-o4-fkg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="KaA-Yp-PaB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2738.5" y="2130.5"/>
+            <point key="canvasLocation" x="3325.5" y="2130.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GEz-zG-NT6">
@@ -1583,7 +1564,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7t-fC-RLt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="L0B-pG-ehu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4334.5" y="2116.5"/>
+            <point key="canvasLocation" x="4921.5" y="2116.5"/>
         </scene>
         <!--Drivers-->
         <scene sceneID="bo1-dL-5Ou">
@@ -1643,7 +1624,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HCC-5a-Y4i" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rr4-Vs-4IT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2738.5" y="2947.5"/>
+            <point key="canvasLocation" x="3325.5" y="2947.5"/>
         </scene>
         <!--Datos del chofer-->
         <scene sceneID="TFh-v5-0xH">
@@ -1802,7 +1783,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6i3-Jr-NPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="C9L-IY-B7v" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4346.5" y="2964.5"/>
+            <point key="canvasLocation" x="4933.5" y="2964.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gEt-aj-fuW">
@@ -1820,7 +1801,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nr3-KT-87A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1986.5" y="2166.5"/>
+            <point key="canvasLocation" x="2573.5" y="2166.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="c66-ad-yc6">
@@ -1838,7 +1819,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2LD-SF-CdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3523" y="2117"/>
+            <point key="canvasLocation" x="4109.5" y="2116.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tdI-MQ-lwL">
@@ -1856,7 +1837,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfs-8e-kUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2019" y="2933"/>
+            <point key="canvasLocation" x="2605.5" y="2932.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gRx-oM-Evy">
@@ -1874,7 +1855,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xpO-oe-Qbx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3535" y="2965"/>
+            <point key="canvasLocation" x="4121.5" y="2964.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0b9-I3-DHq">
@@ -1892,7 +1873,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFZ-yH-uBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4957.5" y="-264.5"/>
+            <point key="canvasLocation" x="4701.5" y="-672.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HPV-q4-uNC">
@@ -1910,7 +1891,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iK1-zw-K9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6127" y="-253"/>
+            <point key="canvasLocation" x="6066.5" y="-665.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZJh-5B-nKK">
@@ -2095,6 +2076,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GAW-mb-hnp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7599" y="1259"/>
+        </scene>
+        <!--Viajes por fecha-->
+        <scene sceneID="85z-Tw-kNM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Icp-H2-1tm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Viajes por fecha" id="bpI-9n-ZEu"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d7l-eB-G28">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dri-x9-UUa" kind="relationship" relationship="rootViewController" id="Z5L-cB-oiF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tfV-qd-jKV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-103.5" y="2290.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

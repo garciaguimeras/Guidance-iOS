@@ -13,6 +13,16 @@ class TripTableViewController: UITableViewController {
     var tripsByDate = Dictionary<NSDate, [ClientTour]>()
     var keys = Array<NSDate>()
 
+    func reloadTripData() {
+        tripsByDate = ClientTourTable().getClientToursAfterDate(NSDate())
+        keys = tripsByDate.keys.sort({(d1: NSDate, d2: NSDate) -> Bool in
+            let date1 = DateUtils.fixDate(d1)
+            let date2 = DateUtils.fixDate(d2)
+            return date1.timeIntervalSince1970 < date2.timeIntervalSince1970
+        })
+        tableView?.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,13 +31,12 @@ class TripTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
-        tripsByDate = ClientTourTable().getClientToursAfterDate(NSDate())
-        keys = tripsByDate.keys.sort({(d1: NSDate, d2: NSDate) -> Bool in
-            let date1 = DateUtils.fixDate(d1)
-            let date2 = DateUtils.fixDate(d2)
-            return date1.timeIntervalSince1970 < date2.timeIntervalSince1970
-        })
+        reloadTripData()
     }
 
     override func didReceiveMemoryWarning() {

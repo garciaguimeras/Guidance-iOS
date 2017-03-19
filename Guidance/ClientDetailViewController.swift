@@ -19,7 +19,6 @@ class ClientDetailViewController: UITableViewController {
     @IBOutlet weak var commentsTextField: UITextField!
     
     var client: Client?
-    var tourList: [ClientTour]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +28,6 @@ class ClientDetailViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        tourList = []
         
         if client != nil {
             nameTextField.text = client!.name
@@ -68,19 +65,6 @@ class ClientDetailViewController: UITableViewController {
             client?.comments = commentsTextField.text!
         }
         
-        if segue.identifier == "showClientTrips" {
-            let navViewController = segue.destinationViewController as? UINavigationController
-            let viewController = navViewController!.viewControllers[0] as? ClientTourTableViewController
-            viewController!.clientId = client != nil ? client!.id : nil
-            viewController!.list = tourList
-        }
-    }
-    
-    // MARK: - Methods
-    
-    @IBAction func saveClientTourList(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as? ClientTourTableViewController
-        tourList = viewController!.list
     }
     
 }

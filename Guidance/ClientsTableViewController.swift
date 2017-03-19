@@ -91,16 +91,29 @@ class ClientsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
         if segue.identifier == "editClient" {
-            let navViewController = segue.destinationViewController as? UINavigationController
-            let viewController = navViewController!.viewControllers[0] as? ClientDetailViewController
             let cell = sender as? UITableViewCell
             let row = tableView.indexPathForCell(cell!)!.row
+            let navViewController = segue.destinationViewController as? UINavigationController
+            let viewController = navViewController!.viewControllers[0] as? ClientDetailViewController
             viewController!.client = clients![row]
+        }
+        
+        if segue.identifier == "showClientTrips" {
+            let cell = sender as? UITableViewCell
+            let row = tableView.indexPathForCell(cell!)!.row
+            let navViewController = segue.destinationViewController as? UINavigationController
+            let viewController = navViewController!.viewControllers[0] as? ClientTourTableViewController
+            viewController!.clientId = clients![row].id
         }
     }
     
     // MARK: - Methods
+    
+    @IBAction func saveClientTourList(segue: UIStoryboardSegue) {
+        // let viewController = segue.sourceViewController as? ClientTourTableViewController
+    }
     
     @IBAction func cancelToClientsTableViewController(segue: UIStoryboardSegue) {
     }
@@ -110,7 +123,7 @@ class ClientsTableViewController: UITableViewController {
             if let client = viewController.client {
                 if client.id == 0 {
                     // insert!
-                    clientTable.addClient(client, tourList: viewController.tourList!)
+                    clientTable.addClient(client)
                     clients = clientTable.getClients()
                     // udpate the table view
                     let index = NSIndexPath(forRow: clients!.count - 1, inSection: 0)
@@ -118,7 +131,7 @@ class ClientsTableViewController: UITableViewController {
                 }
                 else {
                     // update!
-                    clientTable.updateClient(client, tourList: viewController.tourList!)
+                    clientTable.updateClient(client)
                     clients = clientTable.getClients()
                     // refresh
                     tableView.reloadData()
