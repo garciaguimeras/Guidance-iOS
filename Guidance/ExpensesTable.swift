@@ -44,7 +44,8 @@ class ExpensesTable: DbContext {
     func getExpenses() -> [Expenses] {
         var result: [Expenses] = []
         
-        for item in try! db.prepare(table) {
+        let ordered = table.order(date.desc)
+        for item in try! db.prepare(ordered) {
             let expenses = Expenses()
             expenses.id = item[id]
             expenses.date = item[date]

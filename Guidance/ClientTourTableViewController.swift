@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ClientTourTableViewController: UITableViewController {
+class ClientTourTableViewController: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar?
     
     var table = ClientTourTable()
     var list: [ClientTour]?
@@ -24,6 +26,7 @@ class ClientTourTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
+        searchBar?.delegate = self
         list = table.getClientToursByClient(clientId!)
     }
 
@@ -96,6 +99,19 @@ class ClientTourTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - Search
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        list = table.getClientToursByClient(clientId!)
+        if searchText != "" {
+            list = list!.filter({(ct: ClientTour) -> Bool in
+                let tour = TourTable().getTourById(ct.tourId)
+                return tour?.name.lowercaseString.rangeOfString((searchText.lowercaseString)) != nil
+            })
+        }
+        tableView.reloadData()
+    }
 
     // MARK: - Navigation
 
@@ -124,17 +140,17 @@ class ClientTourTableViewController: UITableViewController {
                 if ct.id == 0 {
                     // insert!
                     table.addClientTour(ct)
-                    list = table.getClientToursByClient(clientId!)
                     // udpate the table view
-                    let index = NSIndexPath(forRow: list!.count - 1, inSection: 0)
-                    tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)                }
+                    //let index = NSIndexPath(forRow: list!.count - 1, inSection: 0)
+                    //tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)                
+                }
                 else {
                     // update!
                     table.updateClientTour(ct)
-                    list = table.getClientToursByClient(clientId!)
-                    // refresh
-                    tableView.reloadData()
                 }
+                list = table.getClientToursByClient(clientId!)
+                // refresh
+                tableView.reloadData()
             }
         }
     }

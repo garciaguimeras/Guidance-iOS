@@ -95,7 +95,8 @@ class ClientTourTable: DbContext {
     func getAllFromTable(rows: Table) -> [ClientTour] {
         var result: [ClientTour] = []
         
-        for item in try! db.prepare(rows) {
+        let ordered = rows.order(date)
+        for item in try! db.prepare(ordered) {
             let ct = ClientTour()
             ct.id = item[id]
             ct.clientId = item[clientId]
@@ -140,7 +141,7 @@ class ClientTourTable: DbContext {
         var result = Dictionary<NSDate, [ClientTour]>()
         
         let paramDate = DateUtils.fixDate(date)
-        let rows = table.filter(self.date >= paramDate).order(self.date)
+        let rows = table.filter(self.date >= paramDate)
         let tripList = getAllFromTable(rows)
         for item in tripList {
             let d = DateUtils.fixDate(item.date!)

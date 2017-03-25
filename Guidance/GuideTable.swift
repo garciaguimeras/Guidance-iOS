@@ -60,7 +60,8 @@ class GuideTable: DbContext {
     func getAllGuidesFromTable(rows: Table) -> [Guide] {
         var result: [Guide] = []
         
-        for item in try! db.prepare(rows) {
+        let ordered = rows.order(name)
+        for item in try! db.prepare(ordered) {
             let g = Guide()
             g.id = item[id]
             g.name = item[name]

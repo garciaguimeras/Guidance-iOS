@@ -65,7 +65,7 @@ class TripTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TripByDateCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("TripByDateCell", forIndexPath: indexPath) as! TripTableViewCell
 
         // Configure the cell...
         let key = keys[indexPath.section]
@@ -73,10 +73,14 @@ class TripTableViewController: UITableViewController {
         
         let client = ClientTable().getClientById(item.clientId)
         let tour = TourTable().getTourById(item.tourId)
+        let guide = GuideTable().getGuideById(item.guideId)
+        let driver = DriverTable().getDriverById(item.driverId)
         
-        cell.textLabel!.text = client?.name
-        cell.detailTextLabel!.text = tour?.name
-
+        cell.clientName!.text = client?.name
+        cell.tourName!.text = tour?.name
+        cell.guideName!.text = guide?.name
+        cell.driverName!.text = driver?.name
+        
         return cell
     }
 

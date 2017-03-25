@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59164E031E85F8010089DA4E /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59164E021E85F8010089DA4E /* TripTableViewCell.swift */; };
+		59164E051E8600000089DA4E /* GuidanceTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59164E041E8600000089DA4E /* GuidanceTable.swift */; };
+		59164E071E8607BB0089DA4E /* EncryptionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59164E061E8607BB0089DA4E /* EncryptionUtils.swift */; };
+		59164E0D1E8625450089DA4E /* ActivationKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59164E0C1E8625450089DA4E /* ActivationKeyViewController.swift */; };
+		59164E0F1E8634380089DA4E /* NavigationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59164E0E1E8634380089DA4E /* NavigationUtils.swift */; };
+		59164E121E86361C0089DA4E /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59164E111E86361C0089DA4E /* MainTabBarViewController.swift */; };
 		592BECFA1E742EDB00DD10C9 /* ExpensesTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BECF91E742EDB00DD10C9 /* ExpensesTable.swift */; };
 		592BED021E743B0900DD10C9 /* ExpensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BED011E743B0900DD10C9 /* ExpensesTableViewController.swift */; };
 		592BED041E743E4300DD10C9 /* ExpensesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BED031E743E4300DD10C9 /* ExpensesDetailViewController.swift */; };
-		594377C21E748BE800D0E78B /* GuidanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377C11E748BE800D0E78B /* GuidanceTableViewController.swift */; };
+		594377C21E748BE800D0E78B /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377C11E748BE800D0E78B /* MenuTableViewController.swift */; };
 		594377C41E7490F300D0E78B /* TourTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377C31E7490F300D0E78B /* TourTable.swift */; };
 		594377CB1E7496FB00D0E78B /* TourTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377CA1E7496FB00D0E78B /* TourTableViewController.swift */; };
 		594377CD1E74974100D0E78B /* TourDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377CC1E74974100D0E78B /* TourDetailViewController.swift */; };
@@ -44,10 +50,16 @@
 
 /* Begin PBXFileReference section */
 		5255C2AB3D5741EA415BB95F /* Pods_Guidance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Guidance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59164E021E85F8010089DA4E /* TripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
+		59164E041E8600000089DA4E /* GuidanceTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceTable.swift; sourceTree = "<group>"; };
+		59164E061E8607BB0089DA4E /* EncryptionUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptionUtils.swift; sourceTree = "<group>"; };
+		59164E0C1E8625450089DA4E /* ActivationKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationKeyViewController.swift; sourceTree = "<group>"; };
+		59164E0E1E8634380089DA4E /* NavigationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationUtils.swift; sourceTree = "<group>"; };
+		59164E111E86361C0089DA4E /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		592BECF91E742EDB00DD10C9 /* ExpensesTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesTable.swift; sourceTree = "<group>"; };
 		592BED011E743B0900DD10C9 /* ExpensesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesTableViewController.swift; sourceTree = "<group>"; };
 		592BED031E743E4300DD10C9 /* ExpensesDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesDetailViewController.swift; sourceTree = "<group>"; };
-		594377C11E748BE800D0E78B /* GuidanceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceTableViewController.swift; sourceTree = "<group>"; };
+		594377C11E748BE800D0E78B /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		594377C31E7490F300D0E78B /* TourTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourTable.swift; sourceTree = "<group>"; };
 		594377CA1E7496FB00D0E78B /* TourTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourTableViewController.swift; sourceTree = "<group>"; };
 		594377CC1E74974100D0E78B /* TourDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourDetailViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +114,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		59164E0B1E8625200089DA4E /* ActivationKeyUI */ = {
+			isa = PBXGroup;
+			children = (
+				59164E0C1E8625450089DA4E /* ActivationKeyViewController.swift */,
+			);
+			name = ActivationKeyUI;
+			sourceTree = "<group>";
+		};
+		59164E101E8635D20089DA4E /* MainTabBarUI */ = {
+			isa = PBXGroup;
+			children = (
+				59164E111E86361C0089DA4E /* MainTabBarViewController.swift */,
+			);
+			name = MainTabBarUI;
+			sourceTree = "<group>";
+		};
 		592BECFB1E7432D200DD10C9 /* ClientsUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,12 +149,12 @@
 			name = ExpensesUI;
 			sourceTree = "<group>";
 		};
-		594377C01E748BC700D0E78B /* GuidanceUI */ = {
+		594377C01E748BC700D0E78B /* MenuUI */ = {
 			isa = PBXGroup;
 			children = (
-				594377C11E748BE800D0E78B /* GuidanceTableViewController.swift */,
+				594377C11E748BE800D0E78B /* MenuTableViewController.swift */,
 			);
-			name = GuidanceUI;
+			name = MenuUI;
 			sourceTree = "<group>";
 		};
 		594377C51E74962A00D0E78B /* TourUI */ = {
@@ -172,13 +200,15 @@
 		59B760AA1E6DF6B7003C3FD8 /* Guidance */ = {
 			isa = PBXGroup;
 			children = (
+				59164E101E8635D20089DA4E /* MainTabBarUI */,
+				59164E0B1E8625200089DA4E /* ActivationKeyUI */,
 				59D2A64D1E7EC5A000139323 /* Utils */,
 				59D2A64A1E7EB7E300139323 /* TripUI */,
 				59562E071E7975BE00E6A5F6 /* ClientTourUI */,
 				59DA4D3F1E759A9800B50A2E /* DriverUI */,
 				59DA4D3A1E758C9900B50A2E /* GuideUI */,
 				594377C51E74962A00D0E78B /* TourUI */,
-				594377C01E748BC700D0E78B /* GuidanceUI */,
+				594377C01E748BC700D0E78B /* MenuUI */,
 				592BECFC1E74330D00DD10C9 /* ExpensesUI */,
 				592BECFB1E7432D200DD10C9 /* ClientsUI */,
 				59EBF56C1E6FB80E00177E92 /* Models */,
@@ -196,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				59D2A64B1E7EB82900139323 /* TripTableViewController.swift */,
+				59164E021E85F8010089DA4E /* TripTableViewCell.swift */,
 			);
 			name = TripUI;
 			sourceTree = "<group>";
@@ -204,6 +235,8 @@
 			isa = PBXGroup;
 			children = (
 				59D2A64E1E7EC5B000139323 /* DateUtils.swift */,
+				59164E061E8607BB0089DA4E /* EncryptionUtils.swift */,
+				59164E0E1E8634380089DA4E /* NavigationUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -236,6 +269,7 @@
 				59DA4D341E757FED00B50A2E /* GuideTable.swift */,
 				59DA4D361E75832B00B50A2E /* DriverTable.swift */,
 				59DA4D381E7586E800B50A2E /* ClientTourTable.swift */,
+				59164E041E8600000089DA4E /* GuidanceTable.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -381,8 +415,11 @@
 				59B760AC1E6DF6B7003C3FD8 /* AppDelegate.swift in Sources */,
 				59562E0B1E79761300E6A5F6 /* ClientTourDetailViewController.swift in Sources */,
 				59DA4D3E1E758CD300B50A2E /* GuideDetailViewController.swift in Sources */,
+				59164E121E86361C0089DA4E /* MainTabBarViewController.swift in Sources */,
 				592BECFA1E742EDB00DD10C9 /* ExpensesTable.swift in Sources */,
 				59DA4D431E759ACD00B50A2E /* DriverDetailViewController.swift in Sources */,
+				59164E071E8607BB0089DA4E /* EncryptionUtils.swift in Sources */,
+				59164E051E8600000089DA4E /* GuidanceTable.swift in Sources */,
 				5970A5CE1E75F90A00852BEA /* ExpensesDateViewController.swift in Sources */,
 				592BED041E743E4300DD10C9 /* ExpensesDetailViewController.swift in Sources */,
 				59DA4D411E759ABF00B50A2E /* DriverTableViewController.swift in Sources */,
@@ -394,8 +431,11 @@
 				5950632B1E72ED4400AD4D4B /* ClientDetailViewController.swift in Sources */,
 				59DA4D351E757FED00B50A2E /* GuideTable.swift in Sources */,
 				59D2A64C1E7EB82900139323 /* TripTableViewController.swift in Sources */,
+				59164E0F1E8634380089DA4E /* NavigationUtils.swift in Sources */,
+				59164E0D1E8625450089DA4E /* ActivationKeyViewController.swift in Sources */,
 				59EBF56E1E6FB83F00177E92 /* ClientTable.swift in Sources */,
-				594377C21E748BE800D0E78B /* GuidanceTableViewController.swift in Sources */,
+				59164E031E85F8010089DA4E /* TripTableViewCell.swift in Sources */,
+				594377C21E748BE800D0E78B /* MenuTableViewController.swift in Sources */,
 				59D2A64F1E7EC5B000139323 /* DateUtils.swift in Sources */,
 				59DA4D371E75832B00B50A2E /* DriverTable.swift in Sources */,
 				59D6E3BA1E7C412200807C5C /* ClientTourGuideViewController.swift in Sources */,
@@ -518,6 +558,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.guidance.Guidance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -531,6 +572,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.guidance.Guidance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 			};
 			name = Release;
 		};

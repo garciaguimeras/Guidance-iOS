@@ -8,7 +8,9 @@
 
 import UIKit
 
-class DriverTableViewController: UITableViewController {
+class DriverTableViewController: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar?
     
     var driverTable = DriverTable()
     var drivers: [Driver]?
@@ -22,6 +24,7 @@ class DriverTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        searchBar?.delegate = self
         drivers = driverTable.getDrivers()
     }
 
@@ -85,6 +88,18 @@ class DriverTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - Search
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        drivers = driverTable.getDrivers()
+        if searchText != "" {
+            drivers = drivers!.filter({(d: Driver) -> Bool in
+                return d.name.lowercaseString.rangeOfString((searchText.lowercaseString)) != nil
+            })
+        }
+        tableView.reloadData()
+    }
 
     // MARK: - Navigation
 
@@ -112,18 +127,17 @@ class DriverTableViewController: UITableViewController {
                 if driver.id == 0 {
                     // insert!
                     driverTable.addDriver(driver)
-                    drivers = driverTable.getDrivers()
                     // udpate the table view
-                    let index = NSIndexPath(forRow: drivers!.count - 1, inSection: 0)
-                    tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+                    //let index = NSIndexPath(forRow: drivers!.count - 1, inSection: 0)
+                    //tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)
                 }
                 else {
                     // update!
                     driverTable.updateDriver(driver)
-                    drivers = driverTable.getDrivers()
-                    // refresh
-                    tableView.reloadData()
                 }
+                drivers = driverTable.getDrivers()
+                // refresh
+                tableView.reloadData()
             }
         }
     }

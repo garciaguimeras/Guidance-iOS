@@ -8,7 +8,9 @@
 
 import UIKit
 
-class GuideTableViewController: UITableViewController {
+class GuideTableViewController: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar?
 
     var guideTable = GuideTable()
     var guides: [Guide]?
@@ -22,6 +24,7 @@ class GuideTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        searchBar?.delegate = self
         guides = guideTable.getGuides()
     }
 
@@ -84,6 +87,18 @@ class GuideTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - Search
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        guides = guideTable.getGuides()
+        if searchText != "" {
+            guides = guides!.filter({(g: Guide) -> Bool in
+                return g.name.lowercaseString.rangeOfString((searchText.lowercaseString)) != nil
+            })
+        }
+        tableView.reloadData()
+    }
 
     // MARK: - Navigation
 
@@ -111,18 +126,17 @@ class GuideTableViewController: UITableViewController {
                 if guide.id == 0 {
                     // insert!
                     guideTable.addGuide(guide)
-                    guides = guideTable.getGuides()
                     // udpate the table view
-                    let index = NSIndexPath(forRow: guides!.count - 1, inSection: 0)
-                    tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+                    //let index = NSIndexPath(forRow: guides!.count - 1, inSection: 0)
+                    //tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)
                 }
                 else {
                     // update!
                     guideTable.updateGuide(guide)
-                    guides = guideTable.getGuides()
-                    // refresh
-                    tableView.reloadData()
                 }
+                guides = guideTable.getGuides()
+                // refresh
+                tableView.reloadData()
             }
         }
     }

@@ -40,7 +40,8 @@ class TourTable: DbContext {
     func getAllToursFromTable(rows: Table) -> [Tour] {
         var result: [Tour] = []
         
-        for item in try! db.prepare(rows) {
+        let ordered = rows.order(name)
+        for item in try! db.prepare(ordered) {
             let tour = Tour()
             tour.id = item[id]
             tour.name = item[name]

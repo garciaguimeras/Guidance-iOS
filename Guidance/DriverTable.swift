@@ -56,7 +56,8 @@ class DriverTable: DbContext {
     func getAllDriversFromTable(rows: Table) -> [Driver] {
         var result: [Driver] = []
         
-        for item in try! db.prepare(rows) {
+        let ordered = rows.order(name)
+        for item in try! db.prepare(ordered) {
             let d = Driver()
             d.id = item[id]
             d.name = item[name]

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ClientsTableViewController: UITableViewController {
+class ClientsTableViewController: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar?
     
     var clientTable = ClientTable()
     var clients: [Client]?
@@ -22,6 +24,7 @@ class ClientsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        searchBar?.delegate = self
         clients = clientTable.getClients()
     }
 
@@ -84,6 +87,18 @@ class ClientsTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - Search
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        clients = clientTable.getClients()
+        if searchText != "" {
+            clients = clients!.filter({(client: Client) -> Bool in
+                return client.name.lowercaseString.rangeOfString((searchText.lowercaseString)) != nil
+            })
+        }
+        tableView.reloadData()
+    }
 
     // MARK: - Navigation
 
@@ -124,18 +139,17 @@ class ClientsTableViewController: UITableViewController {
                 if client.id == 0 {
                     // insert!
                     clientTable.addClient(client)
-                    clients = clientTable.getClients()
                     // udpate the table view
-                    let index = NSIndexPath(forRow: clients!.count - 1, inSection: 0)
-                    tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+                    //let index = NSIndexPath(forRow: clients!.count - 1, inSection: 0)
+                    //tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)
                 }
                 else {
                     // update!
                     clientTable.updateClient(client)
-                    clients = clientTable.getClients()
-                    // refresh
-                    tableView.reloadData()
                 }
+                clients = clientTable.getClients()
+                // refresh
+                tableView.reloadData()
             }
         }
     }

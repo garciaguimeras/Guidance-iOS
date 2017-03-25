@@ -8,7 +8,9 @@
 
 import UIKit
 
-class TourTableViewController: UITableViewController {
+class TourTableViewController: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar?
 
     var tourTable = TourTable()
     var tours: [Tour]?
@@ -22,6 +24,7 @@ class TourTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        searchBar?.delegate = self
         tours = tourTable.getTours()
     }
 
@@ -88,6 +91,18 @@ class TourTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - Search
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        tours = tourTable.getTours()
+        if searchText != "" {
+            tours = tours!.filter({(t: Tour) -> Bool in
+                return t.name.lowercaseString.rangeOfString((searchText.lowercaseString)) != nil
+            })
+        }
+        tableView.reloadData()
+    }
 
     // MARK: - Navigation
 
@@ -115,17 +130,17 @@ class TourTableViewController: UITableViewController {
                 if tour.id == 0 {
                     // insert!
                     tourTable.addTour(tour)
-                    tours = tourTable.getTours()
                     // udpate the table view
-                    let index = NSIndexPath(forRow: tours!.count - 1, inSection: 0)
-                    tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)                }
+                    //let index = NSIndexPath(forRow: tours!.count - 1, inSection: 0)
+                    //tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)                
+                }
                 else {
                     // update!
                     tourTable.updateTour(tour)
-                    tours = tourTable.getTours()
-                    // refresh
-                    tableView.reloadData()
                 }
+                tours = tourTable.getTours()
+                // refresh
+                tableView.reloadData()
             }
         }
     }

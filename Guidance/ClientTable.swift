@@ -56,7 +56,8 @@ class ClientTable: DbContext {
     func getAllClientsFromTable(rows: Table) -> [Client] {
         var result: [Client] = []
         
-        for item in try! db.prepare(rows) {
+        let ordered = rows.order(name)
+        for item in try! db.prepare(ordered) {
             let client = Client()
             client.id = item[id]
             client.name = item[name]

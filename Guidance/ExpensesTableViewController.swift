@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ExpensesTableViewController: UITableViewController {
+class ExpensesTableViewController: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar?
 
     var expensesTable = ExpensesTable()
     var expenses: [Expenses]?
@@ -22,6 +24,7 @@ class ExpensesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        searchBar?.delegate = self
         expenses = expensesTable.getExpenses()
     }
 
@@ -90,6 +93,18 @@ class ExpensesTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - Search
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        expenses = expensesTable.getExpenses()
+        if searchText != "" {
+            expenses = expenses!.filter({(exp: Expenses) -> Bool in
+                return exp.description.lowercaseString.rangeOfString((searchText.lowercaseString)) != nil
+            })
+        }
+        tableView.reloadData()
+    }
 
     // MARK: - Navigation
 
@@ -117,17 +132,17 @@ class ExpensesTableViewController: UITableViewController {
                 if exp.id == 0 {
                     // insert!
                     expensesTable.addExpenses(exp)
-                    expenses = expensesTable.getExpenses()
                     // udpate the table view
-                    let index = NSIndexPath(forRow: expenses!.count - 1, inSection: 0)
-                    tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)                }
+                    //let index = NSIndexPath(forRow: expenses!.count - 1, inSection: 0)
+                    //tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)               
+                }
                 else {
                     // update!
                     expensesTable.updateExpenses(exp);
-                    expenses = expensesTable.getExpenses()
-                    // refresh
-                    tableView.reloadData()
                 }
+                expenses = expensesTable.getExpenses()
+                // refresh
+                tableView.reloadData()
             }
         }
     }

@@ -9,6 +9,11 @@
 import UIKit
 
 class TripTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var clientName: UILabel?
+    @IBOutlet weak var tourName: UILabel?
+    @IBOutlet weak var guideName: UILabel?
+    @IBOutlet weak var driverName: UILabel?
 
     override func awakeFromNib() {
         super.awakeFromNib()

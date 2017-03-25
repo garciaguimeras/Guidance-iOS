@@ -10,10 +10,19 @@ import UIKit
 
 class MainTabBarViewController: UITabBarController {
 
+    var guidanceTable = GuidanceTable()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if !guidanceTable.isActivated() {
+            //dismissViewControllerAnimated(true, completion: nil)
+            NavigationUtils.navigateTo("ActivationKey", fromView: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
