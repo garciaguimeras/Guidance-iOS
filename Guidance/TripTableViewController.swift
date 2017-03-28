@@ -12,9 +12,11 @@ class TripTableViewController: UITableViewController {
     
     var tripsByDate = Dictionary<NSDate, [ClientTour]>()
     var keys = Array<NSDate>()
+    
+    var date: NSDate = NSDate()
 
     func reloadTripData() {
-        tripsByDate = ClientTourTable().getClientToursAfterDate(NSDate())
+        tripsByDate = ClientTourTable().getClientToursAfterDate(date)
         keys = tripsByDate.keys.sort({(d1: NSDate, d2: NSDate) -> Bool in
             let date1 = DateUtils.fixDate(d1)
             let date2 = DateUtils.fixDate(d2)
@@ -31,6 +33,7 @@ class TripTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        reloadTripData()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -119,14 +122,29 @@ class TripTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "selectFilterDate" {
+            let navViewController = segue.destinationViewController as? UINavigationController
+            let viewController = navViewController?.viewControllers[0] as? FilterTripDateViewController
+            viewController?.date = date
+        }
     }
-    */
+    
+    // MARK: - Methods
+    
+    @IBAction func cancelToTripTableViewController(segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func setFilterDate(segue: UIStoryboardSegue) {
+        let viewController = segue.sourceViewController as? FilterTripDateViewController
+        date = viewController!.date!
+        reloadTripData()
+    }
 
 }

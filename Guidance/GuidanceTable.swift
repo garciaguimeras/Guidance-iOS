@@ -12,6 +12,7 @@ import SQLite
 class Guidance {
     var id: Int64 = 0
     var activationKey: String = ""
+    var activationDate: NSDate?
     var version: String = ""
     var codeName: String = ""
     var secretKey: String = ""
@@ -26,6 +27,7 @@ class GuidanceTable: DbContext {
     
     var id: Expression<Int64>
     var activationKey: Expression<String>
+    var activationDate: Expression<NSDate?>
     var version: Expression<String>
     var codeName: Expression<String>
     var secretKey: Expression<String>
@@ -33,6 +35,7 @@ class GuidanceTable: DbContext {
     init() {
         id = Expression<Int64>("id")
         activationKey = Expression<String>("activationKey")
+        activationDate = Expression<NSDate?>("activationDate")
         version = Expression<String>("version")
         codeName = Expression<String>("codeName")
         secretKey = Expression<String>("secretKey")
@@ -46,6 +49,7 @@ class GuidanceTable: DbContext {
         try! db.run(table.create { t in
             t.column(id, primaryKey: true)
             t.column(activationKey)
+            t.column(activationDate)
             t.column(version)
             t.column(codeName)
             t.column(secretKey)
@@ -60,6 +64,7 @@ class GuidanceTable: DbContext {
             let g = Guidance()
             g.id = item[id]
             g.activationKey = item[activationKey]
+            g.activationDate = item[activationDate]
             g.version = item[version]
             g.codeName = item[codeName]
             g.secretKey = item[secretKey]
@@ -103,7 +108,10 @@ class GuidanceTable: DbContext {
         }
         
         let row = table.filter(id == UNIQUE_ID)
-        let update = row.update(activationKey <- encrypted)
+        let update = row.update(
+            activationKey <- encrypted,
+            activationDate <- NSDate()
+        )
         try! db.run(update)
         return true
     }

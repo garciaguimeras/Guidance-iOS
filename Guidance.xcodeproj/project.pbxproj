@@ -26,6 +26,7 @@
 		59562E0F1E79CCBB00E6A5F6 /* ClientTourDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59562E0E1E79CCBB00E6A5F6 /* ClientTourDateViewController.swift */; };
 		59562E111E79DCB700E6A5F6 /* ClientTourTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59562E101E79DCB700E6A5F6 /* ClientTourTourViewController.swift */; };
 		5970A5CE1E75F90A00852BEA /* ExpensesDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5970A5CD1E75F90A00852BEA /* ExpensesDateViewController.swift */; };
+		59769BCE1E8B262B0027C66D /* FilterTripDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59769BCD1E8B262B0027C66D /* FilterTripDateViewController.swift */; };
 		598981A61E705F420073C9DA /* ClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598981A51E705F420073C9DA /* ClientsTableViewController.swift */; };
 		59B760AC1E6DF6B7003C3FD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B760AB1E6DF6B7003C3FD8 /* AppDelegate.swift */; };
 		59B760AE1E6DF6B7003C3FD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B760AD1E6DF6B7003C3FD8 /* ViewController.swift */; };
@@ -69,6 +70,7 @@
 		59562E0E1E79CCBB00E6A5F6 /* ClientTourDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourDateViewController.swift; sourceTree = "<group>"; };
 		59562E101E79DCB700E6A5F6 /* ClientTourTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourTourViewController.swift; sourceTree = "<group>"; };
 		5970A5CD1E75F90A00852BEA /* ExpensesDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesDateViewController.swift; sourceTree = "<group>"; };
+		59769BCD1E8B262B0027C66D /* FilterTripDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTripDateViewController.swift; sourceTree = "<group>"; };
 		598981A51E705F420073C9DA /* ClientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsTableViewController.swift; sourceTree = "<group>"; };
 		59B760A81E6DF6B7003C3FD8 /* Guidance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guidance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B760AB1E6DF6B7003C3FD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				59D2A64B1E7EB82900139323 /* TripTableViewController.swift */,
 				59164E021E85F8010089DA4E /* TripTableViewCell.swift */,
+				59769BCD1E8B262B0027C66D /* FilterTripDateViewController.swift */,
 			);
 			name = TripUI;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				594377C41E7490F300D0E78B /* TourTable.swift in Sources */,
 				59DA4D3C1E758CBD00B50A2E /* GuideTableViewController.swift in Sources */,
 				59DA4D391E7586E800B50A2E /* ClientTourTable.swift in Sources */,
+				59769BCE1E8B262B0027C66D /* FilterTripDateViewController.swift in Sources */,
 				594377CB1E7496FB00D0E78B /* TourTableViewController.swift in Sources */,
 				59B760AE1E6DF6B7003C3FD8 /* ViewController.swift in Sources */,
 				59EBF5701E6FB8D100177E92 /* DbContext.swift in Sources */,
