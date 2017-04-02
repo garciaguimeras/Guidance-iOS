@@ -11,11 +11,11 @@ import UIKit
 
 class NavigationUtils {
     
-    class func navigateTo(identifier: String, fromView: UIViewController) {
-        let nextViewController = fromView.storyboard?.instantiateViewControllerWithIdentifier(identifier)
-        nextViewController!.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        nextViewController!.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-        fromView.presentViewController(nextViewController!, animated:true, completion:nil)
+    class func navigateTo(_ identifier: String, fromView: UIViewController) {
+        let nextViewController = fromView.storyboard?.instantiateViewController(withIdentifier: identifier)
+        nextViewController!.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        nextViewController!.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        fromView.present(nextViewController!, animated:true, completion:nil)
     }
     
 }

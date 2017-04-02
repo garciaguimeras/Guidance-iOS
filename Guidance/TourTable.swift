@@ -37,7 +37,7 @@ class TourTable: DbContext {
             })
     }
     
-    func getAllToursFromTable(rows: Table) -> [Tour] {
+    func getAllToursFromTable(_ rows: Table) -> [Tour] {
         var result: [Tour] = []
         
         let ordered = rows.order(name)
@@ -56,7 +56,7 @@ class TourTable: DbContext {
         return getAllToursFromTable(table)
     }
     
-    func getTourById(tourId: Int64) -> Tour? {
+    func getTourById(_ tourId: Int64) -> Tour? {
         let row = table.filter(id == tourId)
         let tours = getAllToursFromTable(row)
         if tours.count == 0 {
@@ -65,7 +65,7 @@ class TourTable: DbContext {
         return tours[0]
     }
     
-    func addTour(tour: Tour) {
+    func addTour(_ tour: Tour) {
         let insert = table.insert(
             name <- tour.name,
             description <- tour.description
@@ -73,7 +73,7 @@ class TourTable: DbContext {
         try! db.run(insert)
     }
     
-    func updateTour(tour: Tour) {
+    func updateTour(_ tour: Tour) {
         let row = table.filter(id == tour.id)
         let update = row.update(
             name <- tour.name,
@@ -82,7 +82,7 @@ class TourTable: DbContext {
         try! db.run(update)
     }
     
-    func deleteTour(tour: Tour) {
+    func deleteTour(_ tour: Tour) {
         let row = table.filter(id == tour.id)
         
         let ctTable = ClientTourTable()

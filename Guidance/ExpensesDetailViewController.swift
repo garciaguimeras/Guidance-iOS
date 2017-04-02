@@ -14,7 +14,7 @@ class ExpensesDetailViewController: UITableViewController {
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var dateTableViewCell: UITableViewCell!
     
-    var date: NSDate?
+    var date: Date?
     var exp: Expenses?
 
     override func viewDidLoad() {
@@ -26,17 +26,17 @@ class ExpensesDetailViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        date = NSDate()
+        date = Date()
         
         if exp != nil {
             descriptionTextField.text = exp!.description
             amountTextField.text = String(exp!.amount)
-            date = exp!.date
+            date = exp!.date as Date?
         }
         
-        let df = NSDateFormatter()
+        let df = DateFormatter()
         df.dateFormat = "dd/MM/yyyy"
-        dateTableViewCell.detailTextLabel!.text = df.stringFromDate(date!)
+        dateTableViewCell.detailTextLabel!.text = df.string(from: date!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +47,7 @@ class ExpensesDetailViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "saveExpensesDetail" {
@@ -63,7 +63,7 @@ class ExpensesDetailViewController: UITableViewController {
         }
         
         if segue.identifier == "setExpensesDate" {
-            let navViewController = segue.destinationViewController as? UINavigationController
+            let navViewController = segue.destination as? UINavigationController
             let viewController = navViewController!.viewControllers[0] as? ExpensesDateViewController
             viewController!.date = date!
         }
@@ -71,12 +71,12 @@ class ExpensesDetailViewController: UITableViewController {
     
     // MARK: - Methods
     
-    @IBAction func updateExpensesDate(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as? ExpensesDateViewController
-        date = viewController!.date
-        let df = NSDateFormatter()
+    @IBAction func updateExpensesDate(_ segue: UIStoryboardSegue) {
+        let viewController = segue.source as? ExpensesDateViewController
+        date = viewController!.date as Date?
+        let df = DateFormatter()
         df.dateFormat = "dd/MM/yyyy"
-        dateTableViewCell.detailTextLabel!.text = df.stringFromDate(date!)
+        dateTableViewCell.detailTextLabel!.text = df.string(from: date!)
     }
 
 }

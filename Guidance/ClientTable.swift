@@ -53,7 +53,7 @@ class ClientTable: DbContext {
         })
     }
     
-    func getAllClientsFromTable(rows: Table) -> [Client] {
+    func getAllClientsFromTable(_ rows: Table) -> [Client] {
         var result: [Client] = []
         
         let ordered = rows.order(name)
@@ -76,7 +76,7 @@ class ClientTable: DbContext {
         return getAllClientsFromTable(table)
     }
     
-    func getClientById(clientId: Int64) -> Client? {
+    func getClientById(_ clientId: Int64) -> Client? {
         let row = table.filter(id == clientId)
         let clients = getAllClientsFromTable(row)
         if clients.count == 0 {
@@ -85,7 +85,7 @@ class ClientTable: DbContext {
         return clients[0]
     }
     
-    func addClient(client: Client) {
+    func addClient(_ client: Client) {
         let insert = table.insert(
             name <- client.name,
             country <- client.country,
@@ -97,7 +97,7 @@ class ClientTable: DbContext {
         try! db.run(insert)
     }
     
-    func updateClient(client: Client) {
+    func updateClient(_ client: Client) {
         let row = table.filter(id == client.id)
         let update = row.update(
             name <- client.name,
@@ -110,7 +110,7 @@ class ClientTable: DbContext {
         try! db.run(update)
     }
     
-    func deleteClient(client: Client) {
+    func deleteClient(_ client: Client) {
         let row = table.filter(id == client.id)
         
         let ctTable = ClientTourTable()

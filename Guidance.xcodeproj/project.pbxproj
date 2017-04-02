@@ -16,6 +16,7 @@
 		592BECFA1E742EDB00DD10C9 /* ExpensesTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BECF91E742EDB00DD10C9 /* ExpensesTable.swift */; };
 		592BED021E743B0900DD10C9 /* ExpensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BED011E743B0900DD10C9 /* ExpensesTableViewController.swift */; };
 		592BED041E743E4300DD10C9 /* ExpensesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BED031E743E4300DD10C9 /* ExpensesDetailViewController.swift */; };
+		593B2F371E9148B300EFE264 /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593B2F361E9148B300EFE264 /* TripDetailViewController.swift */; };
 		594377C21E748BE800D0E78B /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377C11E748BE800D0E78B /* MenuTableViewController.swift */; };
 		594377C41E7490F300D0E78B /* TourTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377C31E7490F300D0E78B /* TourTable.swift */; };
 		594377CB1E7496FB00D0E78B /* TourTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594377CA1E7496FB00D0E78B /* TourTableViewController.swift */; };
@@ -46,6 +47,7 @@
 		59DA4D431E759ACD00B50A2E /* DriverDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D421E759ACD00B50A2E /* DriverDetailViewController.swift */; };
 		59EBF56E1E6FB83F00177E92 /* ClientTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBF56D1E6FB83F00177E92 /* ClientTable.swift */; };
 		59EBF5701E6FB8D100177E92 /* DbContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBF56F1E6FB8D100177E92 /* DbContext.swift */; };
+		59FC2B781E8DD0C0001E139B /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FC2B771E8DD0C0001E139B /* AboutTableViewController.swift */; };
 		F098E58DECA8E5EC402475E1 /* Pods_Guidance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5255C2AB3D5741EA415BB95F /* Pods_Guidance.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,7 @@
 		592BECF91E742EDB00DD10C9 /* ExpensesTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesTable.swift; sourceTree = "<group>"; };
 		592BED011E743B0900DD10C9 /* ExpensesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesTableViewController.swift; sourceTree = "<group>"; };
 		592BED031E743E4300DD10C9 /* ExpensesDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesDetailViewController.swift; sourceTree = "<group>"; };
+		593B2F361E9148B300EFE264 /* TripDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailViewController.swift; sourceTree = "<group>"; };
 		594377C11E748BE800D0E78B /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		594377C31E7490F300D0E78B /* TourTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourTable.swift; sourceTree = "<group>"; };
 		594377CA1E7496FB00D0E78B /* TourTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourTableViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 		59DA4D421E759ACD00B50A2E /* DriverDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverDetailViewController.swift; sourceTree = "<group>"; };
 		59EBF56D1E6FB83F00177E92 /* ClientTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTable.swift; sourceTree = "<group>"; };
 		59EBF56F1E6FB8D100177E92 /* DbContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbContext.swift; sourceTree = "<group>"; };
+		59FC2B771E8DD0C0001E139B /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		A779E67AA3BAFB1C7AD01D27 /* Pods-Guidance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guidance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Guidance/Pods-Guidance.debug.xcconfig"; sourceTree = "<group>"; };
 		E36D88347FEC6EFAAD0B277B /* Pods-Guidance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guidance.release.xcconfig"; path = "Pods/Target Support Files/Pods-Guidance/Pods-Guidance.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +206,7 @@
 		59B760AA1E6DF6B7003C3FD8 /* Guidance */ = {
 			isa = PBXGroup;
 			children = (
+				59FC2B761E8DD08B001E139B /* AboutUI */,
 				59164E101E8635D20089DA4E /* MainTabBarUI */,
 				59164E0B1E8625200089DA4E /* ActivationKeyUI */,
 				59D2A64D1E7EC5A000139323 /* Utils */,
@@ -230,6 +235,7 @@
 				59D2A64B1E7EB82900139323 /* TripTableViewController.swift */,
 				59164E021E85F8010089DA4E /* TripTableViewCell.swift */,
 				59769BCD1E8B262B0027C66D /* FilterTripDateViewController.swift */,
+				593B2F361E9148B300EFE264 /* TripDetailViewController.swift */,
 			);
 			name = TripUI;
 			sourceTree = "<group>";
@@ -277,6 +283,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		59FC2B761E8DD08B001E139B /* AboutUI */ = {
+			isa = PBXGroup;
+			children = (
+				59FC2B771E8DD0C0001E139B /* AboutTableViewController.swift */,
+			);
+			name = AboutUI;
+			sourceTree = "<group>";
+		};
 		B665D1C36C51BA79035DD502 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +335,7 @@
 					59B760A71E6DF6B7003C3FD8 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = G78T3DJN9Z;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -410,6 +425,7 @@
 			files = (
 				594377C41E7490F300D0E78B /* TourTable.swift in Sources */,
 				59DA4D3C1E758CBD00B50A2E /* GuideTableViewController.swift in Sources */,
+				59FC2B781E8DD0C0001E139B /* AboutTableViewController.swift in Sources */,
 				59DA4D391E7586E800B50A2E /* ClientTourTable.swift in Sources */,
 				59769BCE1E8B262B0027C66D /* FilterTripDateViewController.swift in Sources */,
 				594377CB1E7496FB00D0E78B /* TourTableViewController.swift in Sources */,
@@ -419,6 +435,7 @@
 				59B760AC1E6DF6B7003C3FD8 /* AppDelegate.swift in Sources */,
 				59562E0B1E79761300E6A5F6 /* ClientTourDetailViewController.swift in Sources */,
 				59DA4D3E1E758CD300B50A2E /* GuideDetailViewController.swift in Sources */,
+				593B2F371E9148B300EFE264 /* TripDetailViewController.swift in Sources */,
 				59164E121E86361C0089DA4E /* MainTabBarViewController.swift in Sources */,
 				592BECFA1E742EDB00DD10C9 /* ExpensesTable.swift in Sources */,
 				59DA4D431E759ACD00B50A2E /* DriverDetailViewController.swift in Sources */,
@@ -563,6 +580,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.guidance.Guidance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -577,6 +595,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.guidance.Guidance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

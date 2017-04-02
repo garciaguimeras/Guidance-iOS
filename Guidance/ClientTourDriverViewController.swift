@@ -32,26 +32,26 @@ class ClientTourDriverViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return drivers!.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SelectDriverCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SelectDriverCell", for: indexPath)
 
         // Configure the cell...
         let row = indexPath.row
         let driver = drivers![row]
         cell.textLabel!.text = driver.name
-        cell.accessoryType = .None
+        cell.accessoryType = .none
         if driver.id == selectedDriver?.id {
-            cell.accessoryType = .Checkmark
+            cell.accessoryType = .checkmark
         }
 
         return cell
@@ -94,7 +94,7 @@ class ClientTourDriverViewController: UITableViewController {
     
     // MARK: - Table view delegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
         let newSelected = drivers![row]
         selectedDriver = selectedDriver?.id != newSelected.id ? newSelected : nil

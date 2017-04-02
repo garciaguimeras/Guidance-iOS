@@ -40,7 +40,7 @@ class ActivationKeyViewController: UIViewController {
     func showInvalidKeyAlert() {
         let alert = UIAlertView()
         alert.message = "La clave de activacion no es valida"
-        alert.addButtonWithTitle("Ok")
+        alert.addButton(withTitle: "Ok")
         alert.show()
     }
     
@@ -48,7 +48,7 @@ class ActivationKeyViewController: UIViewController {
         NavigationUtils.navigateTo("MainTabBar", fromView: self)
     }
     
-    @IBAction func onContinueButtonClick(sender: AnyObject) {
+    @IBAction func onContinueButtonClick(_ sender: AnyObject) {
         let key = activationKeyTextField!.text!
         let result = guidanceTable.addActivationKey(key)
         if !result {

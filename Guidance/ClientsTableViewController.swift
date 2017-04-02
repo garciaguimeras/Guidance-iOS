@@ -35,16 +35,16 @@ class ClientsTableViewController: UITableViewController, UISearchBarDelegate {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clients!.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ClientCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ClientCell", for: indexPath)
 
         let client = clients![indexPath.row] as Client
         cell.textLabel?.text = client.name
@@ -54,14 +54,14 @@ class ClientsTableViewController: UITableViewController, UISearchBarDelegate {
     }
 
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
 
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             // remove!
             let row = indexPath.row
             let client = clients![row]
@@ -90,11 +90,11 @@ class ClientsTableViewController: UITableViewController, UISearchBarDelegate {
     
     // MARK: - Search
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         clients = clientTable.getClients()
         if searchText != "" {
             clients = clients!.filter({(client: Client) -> Bool in
-                return client.name.lowercaseString.rangeOfString((searchText.lowercaseString)) != nil
+                return client.name.lowercased().range(of: (searchText.lowercased())) != nil
             })
         }
         tableView.reloadData()
@@ -103,22 +103,22 @@ class ClientsTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "editClient" {
             let cell = sender as? UITableViewCell
-            let row = tableView.indexPathForCell(cell!)!.row
-            let navViewController = segue.destinationViewController as? UINavigationController
+            let row = tableView.indexPath(for: cell!)!.row
+            let navViewController = segue.destination as? UINavigationController
             let viewController = navViewController!.viewControllers[0] as? ClientDetailViewController
             viewController!.client = clients![row]
         }
         
         if segue.identifier == "showClientTrips" {
             let cell = sender as? UITableViewCell
-            let row = tableView.indexPathForCell(cell!)!.row
-            let navViewController = segue.destinationViewController as? UINavigationController
+            let row = tableView.indexPath(for: cell!)!.row
+            let navViewController = segue.destination as? UINavigationController
             let viewController = navViewController!.viewControllers[0] as? ClientTourTableViewController
             viewController!.clientId = clients![row].id
         }
@@ -126,15 +126,15 @@ class ClientsTableViewController: UITableViewController, UISearchBarDelegate {
     
     // MARK: - Methods
     
-    @IBAction func saveClientTourList(segue: UIStoryboardSegue) {
+    @IBAction func saveClientTourList(_ segue: UIStoryboardSegue) {
         // let viewController = segue.sourceViewController as? ClientTourTableViewController
     }
     
-    @IBAction func cancelToClientsTableViewController(segue: UIStoryboardSegue) {
+    @IBAction func cancelToClientsTableViewController(_ segue: UIStoryboardSegue) {
     }
     
-    @IBAction func saveClientDetail(segue: UIStoryboardSegue) {
-        if let viewController = segue.sourceViewController as? ClientDetailViewController {
+    @IBAction func saveClientDetail(_ segue: UIStoryboardSegue) {
+        if let viewController = segue.source as? ClientDetailViewController {
             if let client = viewController.client {
                 if client.id == 0 {
                     // insert!

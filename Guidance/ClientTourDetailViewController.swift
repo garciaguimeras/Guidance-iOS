@@ -24,7 +24,7 @@ class ClientTourDetailViewController: UITableViewController {
     @IBOutlet weak var driverLabel: UILabel!
     
     var ct: ClientTour?
-    var date: NSDate?
+    var date: Date?
     var tour: Tour?
     var guide: Guide?
     var driver: Driver?
@@ -38,29 +38,29 @@ class ClientTourDetailViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        date = NSDate()
+        date = Date()
         tour = nil
         guide = nil
         driver = nil
         
         if ct != nil {
             priceTextField.text = String(ct!.price)
-            fromOutsiderCompanySwitch.on = ct!.fromOutsiderCompany
+            fromOutsiderCompanySwitch.isOn = ct!.fromOutsiderCompany
             commentsTextField.text = ct!.comments
             guideCommissionTextField.text = String(ct!.guideCommission)
-            notifyGuideSwitch.on = ct!.notifyGuide
+            notifyGuideSwitch.isOn = ct!.notifyGuide
             driverCommissionTextField.text = String(ct!.driverCommission)
-            notifyDriverSwitch.on = ct!.notifyDriver
+            notifyDriverSwitch.isOn = ct!.notifyDriver
             
-            date = ct!.date
+            date = ct!.date as Date?
             tour = ct!.tourId != 0 ? TourTable().getTourById(ct!.tourId) : nil
             guide = ct!.guideId != 0 ? GuideTable().getGuideById(ct!.guideId) : nil
             driver = ct!.driverId != 0 ? DriverTable().getDriverById(ct!.driverId) : nil
         }
         
-        let df = NSDateFormatter()
+        let df = DateFormatter()
         df.dateFormat = "dd/MM/yyyy"
-        dateLabel.text = df.stringFromDate(date!)
+        dateLabel.text = df.string(from: date!)
         
         tourLabel.text = tour != nil ? tour!.name : "No"
         guideLabel.text = guide != nil ? guide!.name : "No"
@@ -75,7 +75,7 @@ class ClientTourDetailViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "saveClientTourDetail" {
@@ -94,34 +94,34 @@ class ClientTourDetailViewController: UITableViewController {
             ct!.driverId = driver != nil ? driver!.id : 0
             
             ct!.price = Double(priceTextField.text!)!
-            ct!.fromOutsiderCompany = fromOutsiderCompanySwitch.on
+            ct!.fromOutsiderCompany = fromOutsiderCompanySwitch.isOn
             ct!.comments = commentsTextField.text!
             ct!.guideCommission = Double(guideCommissionTextField.text!)!
-            ct!.notifyGuide = notifyGuideSwitch.on
+            ct!.notifyGuide = notifyGuideSwitch.isOn
             ct!.driverCommission = Double(driverCommissionTextField.text!)!
-            ct!.notifyDriver = notifyDriverSwitch.on
+            ct!.notifyDriver = notifyDriverSwitch.isOn
         }
         
         if segue.identifier == "setTripDate" {
-            let navViewController = segue.destinationViewController as? UINavigationController
+            let navViewController = segue.destination as? UINavigationController
             let viewController = navViewController!.viewControllers[0] as? ClientTourDateViewController
             viewController!.date = date!
         }
         
         if segue.identifier == "setTripTour" {
-            let navViewController = segue.destinationViewController as? UINavigationController
+            let navViewController = segue.destination as? UINavigationController
             let viewController = navViewController!.viewControllers[0] as? ClientTourTourViewController
             viewController!.selectedTour = tour
         }
         
         if segue.identifier == "setTripGuide" {
-            let navViewController = segue.destinationViewController as? UINavigationController
+            let navViewController = segue.destination as? UINavigationController
             let viewController = navViewController!.viewControllers[0] as? ClientTourGuideViewController
             viewController!.selectedGuide = guide
         }
         
         if segue.identifier == "setTripDriver" {
-            let navViewController = segue.destinationViewController as? UINavigationController
+            let navViewController = segue.destination as? UINavigationController
             let viewController = navViewController!.viewControllers[0] as? ClientTourDriverViewController
             viewController!.selectedDriver = driver
         }
@@ -129,28 +129,28 @@ class ClientTourDetailViewController: UITableViewController {
     
     // MARK: - Methods
     
-    @IBAction func updateClientTourDate(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as? ClientTourDateViewController
-        date = viewController!.date
-        let df = NSDateFormatter()
+    @IBAction func updateClientTourDate(_ segue: UIStoryboardSegue) {
+        let viewController = segue.source as? ClientTourDateViewController
+        date = viewController!.date as Date?
+        let df = DateFormatter()
         df.dateFormat = "dd/MM/yyyy"
-        dateLabel!.text = df.stringFromDate(date!)
+        dateLabel!.text = df.string(from: date!)
     }
     
-    @IBAction func updateClientTour(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as? ClientTourTourViewController
+    @IBAction func updateClientTour(_ segue: UIStoryboardSegue) {
+        let viewController = segue.source as? ClientTourTourViewController
         tour = viewController?.selectedTour
         tourLabel!.text = tour != nil ? tour!.name : "No"
     }
     
-    @IBAction func updateClientTourGuide(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as? ClientTourGuideViewController
+    @IBAction func updateClientTourGuide(_ segue: UIStoryboardSegue) {
+        let viewController = segue.source as? ClientTourGuideViewController
         guide = viewController?.selectedGuide
         guideLabel!.text = guide != nil ? guide!.name : "No"
     }
     
-    @IBAction func updateClientTourDriver(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as? ClientTourDriverViewController
+    @IBAction func updateClientTourDriver(_ segue: UIStoryboardSegue) {
+        let viewController = segue.source as? ClientTourDriverViewController
         driver = viewController?.selectedDriver
         driverLabel!.text = driver != nil ? driver!.name : "No"
     }

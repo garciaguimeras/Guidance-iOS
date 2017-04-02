@@ -57,7 +57,7 @@ class GuideTable: DbContext {
         })
     }
     
-    func getAllGuidesFromTable(rows: Table) -> [Guide] {
+    func getAllGuidesFromTable(_ rows: Table) -> [Guide] {
         var result: [Guide] = []
         
         let ordered = rows.order(name)
@@ -81,7 +81,7 @@ class GuideTable: DbContext {
         return getAllGuidesFromTable(table)
     }
     
-    func getGuideById(guideId: Int64) -> Guide? {
+    func getGuideById(_ guideId: Int64) -> Guide? {
         let rows = table.filter(id == guideId)
         let guides = getAllGuidesFromTable(rows)
         if guides.count == 0 {
@@ -90,7 +90,7 @@ class GuideTable: DbContext {
         return guides[0]
     }
     
-    func addGuide(g: Guide) {
+    func addGuide(_ g: Guide) {
         let insert = table.insert(
             name <- g.name,
             mobile <- g.mobile,
@@ -103,7 +103,7 @@ class GuideTable: DbContext {
         try! db.run(insert)
     }
     
-    func updateGuide(g: Guide) {
+    func updateGuide(_ g: Guide) {
         let row = table.filter(id == g.id)
         let update = row.update(
             name <- g.name,
@@ -117,7 +117,7 @@ class GuideTable: DbContext {
         try! db.run(update)
     }
     
-    func deleteGuide(g: Guide) {
+    func deleteGuide(_ g: Guide) {
         let row = table.filter(id == g.id)
         
         let ctTable = ClientTourTable()

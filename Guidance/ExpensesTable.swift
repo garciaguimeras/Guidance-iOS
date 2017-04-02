@@ -11,7 +11,7 @@ import SQLite
 
 class Expenses {
     var id: Int64 = 0
-    var date: NSDate?
+    var date: Date?
     var description: String = ""
     var amount: Double = 0
 }
@@ -19,13 +19,13 @@ class Expenses {
 class ExpensesTable: DbContext {
     
     var id: Expression<Int64>
-    var date: Expression<NSDate?>
+    var date: Expression<Date?>
     var description: Expression<String>
     var amount: Expression<Double>
     
     init() {
         id = Expression<Int64>("id")
-        date = Expression<NSDate?>("date")
+        date = Expression<Date?>("date")
         description = Expression<String>("description")
         amount = Expression<Double>("amount")
         
@@ -57,7 +57,7 @@ class ExpensesTable: DbContext {
         return result
     }
     
-    func addExpenses(expenses: Expenses) {
+    func addExpenses(_ expenses: Expenses) {
         let insert = table.insert(
             date <- expenses.date,
             description <- expenses.description,
@@ -66,7 +66,7 @@ class ExpensesTable: DbContext {
         try! db.run(insert)
     }
     
-    func updateExpenses(expenses: Expenses) {
+    func updateExpenses(_ expenses: Expenses) {
         let row = table.filter(id == expenses.id)
         let update = row.update(
             date <- expenses.date,
@@ -76,7 +76,7 @@ class ExpensesTable: DbContext {
         try! db.run(update)
     }
     
-    func deleteExpenses(expenses: Expenses) {
+    func deleteExpenses(_ expenses: Expenses) {
         let row = table.filter(id == expenses.id)
         let delete = row.delete()
         try! db.run(delete)

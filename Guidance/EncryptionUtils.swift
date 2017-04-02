@@ -20,11 +20,11 @@ class EncryptionUtils {
     }
     */
     
-    class func dummy(text: String) -> String {
+    class func dummy(_ text: String) -> String {
         var result = ""
         for chr in text.utf8 {
             let value = Int(chr) - 30 // dummy transformation
-            let transformed = Character(UnicodeScalar(value))
+            let transformed = Character(UnicodeScalar(value)!)
             result = result + String(transformed)
         }
         return result

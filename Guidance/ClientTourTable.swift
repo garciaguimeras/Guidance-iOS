@@ -24,9 +24,12 @@ class ClientTour {
     var notifyDriver: Bool = false
     var notifyGuide: Bool = false
     
+    var payDriver: Bool = false
+    var payGuide: Bool = false
+    
     var fromOutsiderCompany: Bool = false
     
-    var date: NSDate? = nil
+    var date: Date? = nil
     var comments: String = ""
 }
 
@@ -46,9 +49,12 @@ class ClientTourTable: DbContext {
     var notifyDriver: Expression<Bool>
     var notifyGuide: Expression<Bool>
     
+    var payDriver: Expression<Bool>
+    var payGuide: Expression<Bool>
+    
     var fromOutsiderCompany: Expression<Bool>
     
-    var date: Expression<NSDate?>
+    var date: Expression<Date?>
     var comments: Expression<String>
     
     init() {
@@ -66,9 +72,12 @@ class ClientTourTable: DbContext {
         notifyDriver = Expression<Bool>("notifyDriver")
         notifyGuide = Expression<Bool>("notifyGuide")
         
+        payDriver = Expression<Bool>("payDriver")
+        payGuide = Expression<Bool>("payGuide")
+        
         fromOutsiderCompany = Expression<Bool>("fromOutsiderCompany")
         
-        date = Expression<NSDate?>("date")
+        date = Expression<Date?>("date")
         comments = Expression<String>("comments")
         
         super.init(tableName: "clientTour")
@@ -86,13 +95,15 @@ class ClientTourTable: DbContext {
             t.column(guideCommission)
             t.column(notifyDriver)
             t.column(notifyGuide)
+            t.column(payDriver)
+            t.column(payGuide)
             t.column(fromOutsiderCompany)
             t.column(date)
             t.column(comments)
         })
     }
     
-    func getAllFromTable(rows: Table) -> [ClientTour] {
+    func getAllFromTable(_ rows: Table) -> [ClientTour] {
         var result: [ClientTour] = []
         
         let ordered = rows.order(date)
@@ -108,6 +119,8 @@ class ClientTourTable: DbContext {
             ct.guideCommission = item[guideCommission]
             ct.notifyDriver = item[notifyDriver]
             ct.notifyGuide = item[notifyGuide]
+            ct.payDriver = item[payDriver]
+            ct.payGuide = item[payGuide]
             ct.fromOutsiderCompany = item[fromOutsiderCompany]
             ct.date = item[date]
             ct.comments = item[comments]
@@ -117,28 +130,28 @@ class ClientTourTable: DbContext {
         return result
     }
     
-    func getClientToursByClient(clientId: Int64) -> [ClientTour] {
+    func getClientToursByClient(_ clientId: Int64) -> [ClientTour] {
         let rows = table.filter(clientId == self.clientId)
         return getAllFromTable(rows)
     }
     
-    func getClientToursByTour(tourId: Int64) -> [ClientTour] {
+    func getClientToursByTour(_ tourId: Int64) -> [ClientTour] {
         let rows = table.filter(tourId == self.tourId)
         return getAllFromTable(rows)
     }
     
-    func getClientToursByGuide(guideId: Int64) -> [ClientTour] {
+    func getClientToursByGuide(_ guideId: Int64) -> [ClientTour] {
         let rows = table.filter(guideId == self.guideId)
         return getAllFromTable(rows)
     }
     
-    func getClientToursByDriver(driverId: Int64) -> [ClientTour] {
+    func getClientToursByDriver(_ driverId: Int64) -> [ClientTour] {
         let rows = table.filter(driverId == self.driverId)
         return getAllFromTable(rows)
     }
     
-    func getClientToursAfterDate(date: NSDate) -> Dictionary<NSDate, [ClientTour]> {
-        var result = Dictionary<NSDate, [ClientTour]>()
+    func getClientToursAfterDate(_ date: Date) -> Dictionary<Date, [ClientTour]> {
+        var result = Dictionary<Date, [ClientTour]>()
         
         let paramDate = DateUtils.fixDate(date)
         let rows = table.filter(self.date >= paramDate)
@@ -155,7 +168,7 @@ class ClientTourTable: DbContext {
         return result
     }
     
-    func addClientTour(ct: ClientTour) {
+    func addClientTour(_ ct: ClientTour) {
         let insert = table.insert(
             clientId <- ct.clientId,
             tourId <- ct.tourId,
@@ -166,6 +179,8 @@ class ClientTourTable: DbContext {
             guideCommission <- ct.guideCommission,
             notifyDriver <- ct.notifyDriver,
             notifyGuide <- ct.notifyGuide,
+            payDriver <- ct.payDriver,
+            payGuide <- ct.payGuide,
             fromOutsiderCompany <- ct.fromOutsiderCompany,
             date <- ct.date,
             comments <- ct.comments
@@ -173,7 +188,7 @@ class ClientTourTable: DbContext {
         try! db.run(insert)
     }
     
-    func updateClientTour(ct: ClientTour) {
+    func updateClientTour(_ ct: ClientTour) {
         let row = table.filter(id == ct.id)
         let update = row.update(
             clientId <- ct.clientId,
@@ -185,6 +200,8 @@ class ClientTourTable: DbContext {
             guideCommission <- ct.guideCommission,
             notifyDriver <- ct.notifyDriver,
             notifyGuide <- ct.notifyGuide,
+            payDriver <- ct.payDriver,
+            payGuide <- ct.payGuide,
             fromOutsiderCompany <- ct.fromOutsiderCompany,
             date <- ct.date,
             comments <- ct.comments
@@ -192,7 +209,7 @@ class ClientTourTable: DbContext {
         try! db.run(update)
     }
     
-    func deleteClientTour(ct: ClientTour) {
+    func deleteClientTour(_ ct: ClientTour) {
         let row = table.filter(id == ct.id)
         let delete = row.delete()
         try! db.run(delete)

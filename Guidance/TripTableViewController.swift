@@ -10,14 +10,14 @@ import UIKit
 
 class TripTableViewController: UITableViewController {
     
-    var tripsByDate = Dictionary<NSDate, [ClientTour]>()
-    var keys = Array<NSDate>()
+    var tripsByDate = Dictionary<Date, [ClientTour]>()
+    var keys = Array<Date>()
     
-    var date: NSDate = NSDate()
+    var date: Date = Date()
 
     func reloadTripData() {
         tripsByDate = ClientTourTable().getClientToursAfterDate(date)
-        keys = tripsByDate.keys.sort({(d1: NSDate, d2: NSDate) -> Bool in
+        keys = tripsByDate.keys.sorted(by: {(d1: Date, d2: Date) -> Bool in
             let date1 = DateUtils.fixDate(d1)
             let date2 = DateUtils.fixDate(d2)
             return date1.timeIntervalSince1970 < date2.timeIntervalSince1970
@@ -36,7 +36,7 @@ class TripTableViewController: UITableViewController {
         reloadTripData()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         reloadTripData()
@@ -49,26 +49,26 @@ class TripTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return tripsByDate.keys.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         let key = keys[section]
         return (tripsByDate[key]?.count)!
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let key = keys[section]
-        let df = NSDateFormatter()
+        let df = DateFormatter()
         df.dateFormat = "EEEE, MMMM dd"
-        return df.stringFromDate(key)
+        return df.string(from: key)
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TripByDateCell", forIndexPath: indexPath) as! TripTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TripByDateCell", for: indexPath) as! TripTableViewCell
 
         // Configure the cell...
         let key = keys[indexPath.section]
@@ -76,13 +76,13 @@ class TripTableViewController: UITableViewController {
         
         let client = ClientTable().getClientById(item.clientId)
         let tour = TourTable().getTourById(item.tourId)
-        let guide = GuideTable().getGuideById(item.guideId)
-        let driver = DriverTable().getDriverById(item.driverId)
+        // let guide = GuideTable().getGuideById(item.guideId)
+        // let driver = DriverTable().getDriverById(item.driverId)
         
         cell.clientName!.text = client?.name
-        cell.tourName!.text = tour?.name
-        cell.guideName!.text = guide?.name
-        cell.driverName!.text = driver?.name
+        cell.tourName!.text = tour != nil ? tour?.name : "Sin actividad definida"
+        // cell.guideName!.text = guide != nil ? guide?.name : "Sin guia"
+        // cell.driverName!.text = driver != nil ? driver?.name : "Sin chofer"
         
         return cell
     }
@@ -125,25 +125,35 @@ class TripTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "selectFilterDate" {
-            let navViewController = segue.destinationViewController as? UINavigationController
+            let navViewController = segue.destination as? UINavigationController
             let viewController = navViewController?.viewControllers[0] as? FilterTripDateViewController
             viewController?.date = date
+        }
+        
+        if segue.identifier == "viewTripFullDetail" {
+            let navViewController = segue.destination as? UINavigationController
+            let viewController = navViewController?.viewControllers[0] as? TripDetailViewController
+            let cell = sender as? UITableViewCell
+            let indexPath = tableView.indexPath(for: cell!)!
+            let key = keys[indexPath.section]
+            let trip = tripsByDate[key]?[indexPath.row];
+            viewController!.clientTour = trip
         }
     }
     
     // MARK: - Methods
     
-    @IBAction func cancelToTripTableViewController(segue: UIStoryboardSegue) {
+    @IBAction func cancelToTripTableViewController(_ segue: UIStoryboardSegue) {
     }
     
-    @IBAction func setFilterDate(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as? FilterTripDateViewController
-        date = viewController!.date!
+    @IBAction func setFilterDate(_ segue: UIStoryboardSegue) {
+        let viewController = segue.source as? FilterTripDateViewController
+        date = viewController!.date! as Date
         reloadTripData()
     }
 

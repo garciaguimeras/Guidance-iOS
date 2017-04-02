@@ -53,7 +53,7 @@ class DriverTable: DbContext {
         })
     }
     
-    func getAllDriversFromTable(rows: Table) -> [Driver] {
+    func getAllDriversFromTable(_ rows: Table) -> [Driver] {
         var result: [Driver] = []
         
         let ordered = rows.order(name)
@@ -76,7 +76,7 @@ class DriverTable: DbContext {
         return getAllDriversFromTable(table)
     }
     
-    func getDriverById(driverId: Int64) -> Driver? {
+    func getDriverById(_ driverId: Int64) -> Driver? {
         let rows = table.filter(id == driverId)
         let drivers = getAllDriversFromTable(rows)
         if drivers.count == 0 {
@@ -85,7 +85,7 @@ class DriverTable: DbContext {
         return drivers[0]
     }
     
-    func addDriver(d: Driver) {
+    func addDriver(_ d: Driver) {
         let insert = table.insert(
             name <- d.name,
             mobile <- d.mobile,
@@ -97,7 +97,7 @@ class DriverTable: DbContext {
         try! db.run(insert)
     }
     
-    func updateDriver(d: Driver) {
+    func updateDriver(_ d: Driver) {
         let row = table.filter(id == d.id)
         let update = row.update(
             name <- d.name,
@@ -110,7 +110,7 @@ class DriverTable: DbContext {
         try! db.run(update)
     }
     
-    func deleteDriver(d: Driver) {
+    func deleteDriver(_ d: Driver) {
         let row = table.filter(id == d.id)
         
         let ctTable = ClientTourTable()

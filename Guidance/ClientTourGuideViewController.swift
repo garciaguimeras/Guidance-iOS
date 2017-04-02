@@ -32,26 +32,26 @@ class ClientTourGuideViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return guides!.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SelectGuideCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SelectGuideCell", for: indexPath)
 
         // Configure the cell...
         let row = indexPath.row
         let guide = guides![row]
         cell.textLabel!.text = guide.name
-        cell.accessoryType = .None
+        cell.accessoryType = .none
         if guide.id == selectedGuide?.id {
-            cell.accessoryType = .Checkmark
+            cell.accessoryType = .checkmark
         }
 
         return cell
@@ -93,7 +93,7 @@ class ClientTourGuideViewController: UITableViewController {
     */
     
     // MARK: - Table view delegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
         let newSelected = guides![row]
         selectedGuide = selectedGuide?.id != newSelected.id ? newSelected : nil

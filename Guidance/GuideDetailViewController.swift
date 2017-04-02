@@ -36,7 +36,7 @@ class GuideDetailViewController: UITableViewController {
             addressTextField.text = guide!.address
             professionTextField.text = guide!.profession
             skillsTextField.text = guide!.skills
-            isFavoriteSwitch.on = guide!.isFavorite
+            isFavoriteSwitch.isOn = guide!.isFavorite
         }
     }
 
@@ -48,7 +48,7 @@ class GuideDetailViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "saveGuideDetail" {
@@ -62,7 +62,7 @@ class GuideDetailViewController: UITableViewController {
             guide?.address = addressTextField.text!
             guide?.profession = professionTextField.text!
             guide?.skills = skillsTextField.text!
-            guide?.isFavorite = isFavoriteSwitch.on
+            guide?.isFavorite = isFavoriteSwitch.isOn
         }
     }
 

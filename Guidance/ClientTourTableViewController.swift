@@ -37,18 +37,18 @@ class ClientTourTableViewController: UITableViewController, UISearchBarDelegate 
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return list!.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TripCell", for: indexPath)
 
         // Configure the cell...
         let ct = list![indexPath.row] as ClientTour
@@ -57,24 +57,24 @@ class ClientTourTableViewController: UITableViewController, UISearchBarDelegate 
             let tourTable = TourTable()
             tour = tourTable.getTourById(ct.tourId)
         }
-        cell.textLabel?.text = tour != nil ? tour?.name : ""
+        cell.textLabel?.text = tour != nil ? tour?.name : "Sin actividad definida"
         
-        let df = NSDateFormatter()
+        let df = DateFormatter()
         df.dateFormat = "dd/MM/yyyy"
-        cell.detailTextLabel?.text = String(df.stringFromDate(ct.date!))
+        cell.detailTextLabel?.text = String(df.string(from: ct.date! as Date))
 
         return cell
     }
 
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
 
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             let row = indexPath.row
             let ct = list![row]
             table.deleteClientTour(ct)
@@ -102,12 +102,12 @@ class ClientTourTableViewController: UITableViewController, UISearchBarDelegate 
     
     // MARK: - Search
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         list = table.getClientToursByClient(clientId!)
         if searchText != "" {
             list = list!.filter({(ct: ClientTour) -> Bool in
                 let tour = TourTable().getTourById(ct.tourId)
-                return tour?.name.lowercaseString.rangeOfString((searchText.lowercaseString)) != nil
+                return tour?.name.lowercased().range(of: (searchText.lowercased())) != nil
             })
         }
         tableView.reloadData()
@@ -116,25 +116,25 @@ class ClientTourTableViewController: UITableViewController, UISearchBarDelegate 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "editTrip" {
-            let navViewController = segue.destinationViewController as? UINavigationController
+            let navViewController = segue.destination as? UINavigationController
             let viewController = navViewController!.viewControllers[0] as? ClientTourDetailViewController
             let cell = sender as? UITableViewCell
-            let row = tableView.indexPathForCell(cell!)!.row
+            let row = tableView.indexPath(for: cell!)!.row
             viewController!.ct = list![row]
         }
     }
     
     // MARK: - Methods
     
-    @IBAction func cancelToClientTourTableViewController(segue: UIStoryboardSegue) {
+    @IBAction func cancelToClientTourTableViewController(_ segue: UIStoryboardSegue) {
     }
     
-    @IBAction func saveClientTourDetail(segue: UIStoryboardSegue) {
-        if let viewController = segue.sourceViewController as? ClientTourDetailViewController {
+    @IBAction func saveClientTourDetail(_ segue: UIStoryboardSegue) {
+        if let viewController = segue.source as? ClientTourDetailViewController {
             if let ct = viewController.ct {
                 ct.clientId = clientId!
                 if ct.id == 0 {

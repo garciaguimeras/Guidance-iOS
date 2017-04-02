@@ -18,7 +18,7 @@ class MainTabBarViewController: UITabBarController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if !guidanceTable.isActivated() {
             //dismissViewControllerAnimated(true, completion: nil)
             NavigationUtils.navigateTo("ActivationKey", fromView: self)

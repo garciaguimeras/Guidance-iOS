@@ -17,7 +17,7 @@ class DbContext {
     
     init(tableName: String) {
         
-        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         self.db = try! Connection("\(path)/Guidance.sqlite3", readonly: false)
 
         self.tableName = tableName
@@ -29,7 +29,7 @@ class DbContext {
     }
     
     func tableExist() -> Bool {
-        let count: Int64 = db.scalar("SELECT EXISTS(SELECT name FROM sqlite_master WHERE name = ?)", tableName) as! Int64
+        let count: Int64 = try! db.scalar("SELECT EXISTS(SELECT name FROM sqlite_master WHERE name = ?)", tableName) as! Int64
         
         return count != 0
     }

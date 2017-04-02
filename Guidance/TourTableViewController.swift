@@ -35,19 +35,19 @@ class TourTableViewController: UITableViewController, UISearchBarDelegate {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return tours!.count
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TourCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TourCell", for: indexPath)
 
         let tour = tours![indexPath.row] as Tour
         cell.textLabel?.text = tour.name
@@ -58,14 +58,14 @@ class TourTableViewController: UITableViewController, UISearchBarDelegate {
 
 
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
 
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             // remove!
             let row = indexPath.row
             let tour = tours![row]
@@ -94,11 +94,11 @@ class TourTableViewController: UITableViewController, UISearchBarDelegate {
     
     // MARK: - Search
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         tours = tourTable.getTours()
         if searchText != "" {
             tours = tours!.filter({(t: Tour) -> Bool in
-                return t.name.lowercaseString.rangeOfString((searchText.lowercaseString)) != nil
+                return t.name.lowercased().range(of: (searchText.lowercased())) != nil
             })
         }
         tableView.reloadData()
@@ -107,25 +107,25 @@ class TourTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "editTour" {
-            let navViewController = segue.destinationViewController as? UINavigationController
+            let navViewController = segue.destination as? UINavigationController
             let viewController = navViewController!.viewControllers[0] as? TourDetailViewController
             let cell = sender as? UITableViewCell
-            let row = tableView.indexPathForCell(cell!)!.row
+            let row = tableView.indexPath(for: cell!)!.row
             viewController!.tour = tours![row]
         }
     }
     
     // MARK: - Methods
     
-    @IBAction func cancelToTourTableViewController(segue: UIStoryboardSegue) {
+    @IBAction func cancelToTourTableViewController(_ segue: UIStoryboardSegue) {
     }
     
-    @IBAction func saveTourDetail(segue: UIStoryboardSegue) {
-        if let viewController = segue.sourceViewController as? TourDetailViewController {
+    @IBAction func saveTourDetail(_ segue: UIStoryboardSegue) {
+        if let viewController = segue.source as? TourDetailViewController {
             if let tour = viewController.tour {
                 if tour.id == 0 {
                     // insert!

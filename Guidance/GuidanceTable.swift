@@ -12,10 +12,11 @@ import SQLite
 class Guidance {
     var id: Int64 = 0
     var activationKey: String = ""
-    var activationDate: NSDate?
+    var activationDate: Date?
     var version: String = ""
     var codeName: String = ""
     var secretKey: String = ""
+    var databaseVersion: Int64 = 0
 }
 
 class GuidanceTable: DbContext {
@@ -24,21 +25,24 @@ class GuidanceTable: DbContext {
     var VERSION: String = "1.0.0"
     var CODE_NAME: String = "Murakami"
     var SECRET_KEY: String = "lucyinthesky"
+    var DATABASE_VERSION: Int64 = 1
     
     var id: Expression<Int64>
     var activationKey: Expression<String>
-    var activationDate: Expression<NSDate?>
+    var activationDate: Expression<Date?>
     var version: Expression<String>
     var codeName: Expression<String>
     var secretKey: Expression<String>
+    var databaseVersion: Expression<Int64>
     
     init() {
         id = Expression<Int64>("id")
         activationKey = Expression<String>("activationKey")
-        activationDate = Expression<NSDate?>("activationDate")
+        activationDate = Expression<Date?>("activationDate")
         version = Expression<String>("version")
         codeName = Expression<String>("codeName")
         secretKey = Expression<String>("secretKey")
+        databaseVersion = Expression<Int64>("databaseVersion")
         
         super.init(tableName: "guidance")
         
@@ -53,6 +57,7 @@ class GuidanceTable: DbContext {
             t.column(version)
             t.column(codeName)
             t.column(secretKey)
+            t.column(databaseVersion)
         })
     }
     
@@ -68,6 +73,7 @@ class GuidanceTable: DbContext {
             g.version = item[version]
             g.codeName = item[codeName]
             g.secretKey = item[secretKey]
+            g.databaseVersion = item[databaseVersion]
             result.append(g)
         }
         
@@ -85,7 +91,8 @@ class GuidanceTable: DbContext {
             activationKey <- "",
             version <- VERSION,
             codeName <- CODE_NAME,
-            secretKey <- EncryptionUtils.dummy(SECRET_KEY)
+            secretKey <- EncryptionUtils.dummy(SECRET_KEY),
+            databaseVersion <- DATABASE_VERSION
         )
         try! db.run(insert)
     }
@@ -96,7 +103,7 @@ class GuidanceTable: DbContext {
         return activated
     }
     
-    func addActivationKey(key: String) -> Bool {
+    func addActivationKey(_ key: String) -> Bool {
         if isActivated() {
             return true
         }
@@ -110,7 +117,7 @@ class GuidanceTable: DbContext {
         let row = table.filter(id == UNIQUE_ID)
         let update = row.update(
             activationKey <- encrypted,
-            activationDate <- NSDate()
+            activationDate <- Date()
         )
         try! db.run(update)
         return true
