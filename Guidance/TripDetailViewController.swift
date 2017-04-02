@@ -77,15 +77,25 @@ class TripDetailViewController: UITableViewController {
     // MARK: - Methods
     
     @IBAction func payGuideCommission(sender: AnyObject) {
-        clientTour!.payGuide = true
-        ClientTourTable().updateClientTour(clientTour!)
-        payGuideButton!.isEnabled = false
+        let alert = UIAlertController(title: "Comisiones", message: "Efectuado el pago de comision al guia?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            self.clientTour!.payGuide = true
+            ClientTourTable().updateClientTour(self.clientTour!)
+            self.payGuideButton!.isEnabled = false
+        }))
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func payDriverCommission(sender: AnyObject) {
-        clientTour!.payDriver = true
-        ClientTourTable().updateClientTour(clientTour!)
-        payDriverButton!.isEnabled = false
+        let alert = UIAlertController(title: "Comisiones", message: "Efectuado el pago de comision al chofer?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            self.clientTour!.payDriver = true
+            ClientTourTable().updateClientTour(self.clientTour!)
+            self.payDriverButton!.isEnabled = false
+        }))
+        present(alert, animated: true, completion: nil)
     }
 
 }
