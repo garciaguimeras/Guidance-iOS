@@ -31,7 +31,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introduzca la clave de activacion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHW-59-RKn">
-                                <rect key="frame" x="31.5" y="260" width="256" height="21"/>
+                                <rect key="frame" x="32" y="260" width="256" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="5cm-au-2cx"/>
                                     <constraint firstAttribute="width" constant="256" id="nmB-Nh-Obo"/>

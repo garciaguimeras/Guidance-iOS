@@ -45,6 +45,7 @@
 		59DA4D3E1E758CD300B50A2E /* GuideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D3D1E758CD300B50A2E /* GuideDetailViewController.swift */; };
 		59DA4D411E759ABF00B50A2E /* DriverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D401E759ABF00B50A2E /* DriverTableViewController.swift */; };
 		59DA4D431E759ACD00B50A2E /* DriverDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D421E759ACD00B50A2E /* DriverDetailViewController.swift */; };
+		59E66B501E96BD900075EC30 /* UserNotificationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E66B4F1E96BD900075EC30 /* UserNotificationUtils.swift */; };
 		59EBF56E1E6FB83F00177E92 /* ClientTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBF56D1E6FB83F00177E92 /* ClientTable.swift */; };
 		59EBF5701E6FB8D100177E92 /* DbContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBF56F1E6FB8D100177E92 /* DbContext.swift */; };
 		59FC2B781E8DD0C0001E139B /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FC2B771E8DD0C0001E139B /* AboutTableViewController.swift */; };
@@ -93,6 +94,7 @@
 		59DA4D3D1E758CD300B50A2E /* GuideDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideDetailViewController.swift; sourceTree = "<group>"; };
 		59DA4D401E759ABF00B50A2E /* DriverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverTableViewController.swift; sourceTree = "<group>"; };
 		59DA4D421E759ACD00B50A2E /* DriverDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverDetailViewController.swift; sourceTree = "<group>"; };
+		59E66B4F1E96BD900075EC30 /* UserNotificationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationUtils.swift; sourceTree = "<group>"; };
 		59EBF56D1E6FB83F00177E92 /* ClientTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTable.swift; sourceTree = "<group>"; };
 		59EBF56F1E6FB8D100177E92 /* DbContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbContext.swift; sourceTree = "<group>"; };
 		59FC2B771E8DD0C0001E139B /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				59D2A64E1E7EC5B000139323 /* DateUtils.swift */,
 				59164E061E8607BB0089DA4E /* EncryptionUtils.swift */,
 				59164E0E1E8634380089DA4E /* NavigationUtils.swift */,
+				59E66B4F1E96BD900075EC30 /* UserNotificationUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				59164E071E8607BB0089DA4E /* EncryptionUtils.swift in Sources */,
 				59164E051E8600000089DA4E /* GuidanceTable.swift in Sources */,
 				5970A5CE1E75F90A00852BEA /* ExpensesDateViewController.swift in Sources */,
+				59E66B501E96BD900075EC30 /* UserNotificationUtils.swift in Sources */,
 				592BED041E743E4300DD10C9 /* ExpensesDetailViewController.swift in Sources */,
 				59DA4D411E759ABF00B50A2E /* DriverTableViewController.swift in Sources */,
 				59562E111E79DCB700E6A5F6 /* ClientTourTourViewController.swift in Sources */,

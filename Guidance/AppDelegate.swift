@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if #available(iOS 10.0, *) {
+            UserNotificationUtils.register(delegate: nil)
+            let content = UserNotificationUtils.createUserNotificationContent(title: "Nuevos viajes", message: "Revisa tus viajes para el dia de hoy")
+            UserNotificationUtils.triggerUserNotification(with: "NextTrips", content: content)
+        }
+        
         return true
     }
 
@@ -41,6 +49,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+}
 
+@available(iOS 10.0, *)
+extension AppDelegate: UNUserNotificationCenterDelegate {
+       
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        switch (response.notification.request.identifier) {
+            
+            case "NextTrips":
+                break
+            
+            default:
+                break
+            
+        }
+        
+        completionHandler()
+    }
+    
 }
 
