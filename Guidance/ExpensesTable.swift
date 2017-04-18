@@ -41,10 +41,10 @@ class ExpensesTable: DbContext {
             })
     }
     
-    func getExpenses() -> [Expenses] {
+    func getAllExpensesFromTable(_ rows: Table) -> [Expenses] {
         var result: [Expenses] = []
         
-        let ordered = table.order(date.desc)
+        let ordered = rows.order(date.desc)
         for item in try! db.prepare(ordered) {
             let expenses = Expenses()
             expenses.id = item[id]
@@ -52,6 +52,30 @@ class ExpensesTable: DbContext {
             expenses.description = item[description]
             expenses.amount = item[amount]
             result.append(expenses)
+        }
+        
+        return result
+    }
+    
+    func getExpenses() -> [Expenses] {
+        return getAllExpensesFromTable(table)
+    }
+    
+    func getExpenses(forLastMonths totalMonths: Int) -> Dictionary<Date, [Expenses]> {
+        var result = Dictionary<Date, [Expenses]>()
+        
+        // TODO: Fix this
+        var date = DateUtils.getInitialDayOfPrevMonth(forDate: Date())
+        var count = 0
+        while count < totalMonths {
+            let (initDate, finalDate) = DateUtils.getMonthInterval(forDate: date)
+            let rows = table.filter(self.date >= initDate && self.date < finalDate)
+            
+            let list = getAllExpensesFromTable(rows)
+            result[date] = list
+            
+            count = count + 1
+            date = DateUtils.getInitialDayOfPrevMonth(forDate: date)
         }
         
         return result

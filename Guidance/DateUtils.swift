@@ -17,4 +17,24 @@ class DateUtils {
         return calendar.date(from: components)!
     }
     
+    class func getInitialDayOfMonth(forDate date: Date) -> Date {
+        let calendar = Calendar.current
+        let initDate = calendar.date(bySetting: .day, value: 1, of: fixDate(date))!
+        return initDate
+    }
+    
+    class func getInitialDayOfPrevMonth(forDate date: Date) -> Date {
+        let calendar = Calendar.current
+        let initDate = calendar.date(bySetting: .day, value: 1, of: fixDate(date))!
+        let prevInitDate = calendar.date(byAdding: .month, value: -1, to: initDate)!
+        return prevInitDate
+    }
+    
+    class func getMonthInterval(forDate date: Date) -> (Date, Date) {
+        let calendar = Calendar.current
+        let initDate = calendar.date(bySetting: .day, value: 1, of: fixDate(date))!
+        let finalDate = calendar.date(byAdding: .month, value: 1, to: initDate)!
+        return (initDate, finalDate)
+    }
+    
 }

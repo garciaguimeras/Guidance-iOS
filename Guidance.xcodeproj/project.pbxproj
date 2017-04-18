@@ -36,6 +36,9 @@
 		59B760B61E6DF6B7003C3FD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B760B41E6DF6B7003C3FD8 /* LaunchScreen.storyboard */; };
 		59D2A64C1E7EB82900139323 /* TripTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D2A64B1E7EB82900139323 /* TripTableViewController.swift */; };
 		59D2A64F1E7EC5B000139323 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D2A64E1E7EC5B000139323 /* DateUtils.swift */; };
+		59D365CE1EA55872004DEA38 /* FinancesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D365CD1EA55872004DEA38 /* FinancesTableViewController.swift */; };
+		59D365D11EA558FF004DEA38 /* Finances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D365D01EA558FF004DEA38 /* Finances.swift */; };
+		59D365D31EA567F4004DEA38 /* FinancesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D365D21EA567F4004DEA38 /* FinancesTableViewCell.swift */; };
 		59D6E3BA1E7C412200807C5C /* ClientTourGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D6E3B91E7C412200807C5C /* ClientTourGuideViewController.swift */; };
 		59D6E3BC1E7C43C000807C5C /* ClientTourDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D6E3BB1E7C43C000807C5C /* ClientTourDriverViewController.swift */; };
 		59DA4D351E757FED00B50A2E /* GuideTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA4D341E757FED00B50A2E /* GuideTable.swift */; };
@@ -85,6 +88,9 @@
 		59B760B71E6DF6B7003C3FD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59D2A64B1E7EB82900139323 /* TripTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewController.swift; sourceTree = "<group>"; };
 		59D2A64E1E7EC5B000139323 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		59D365CD1EA55872004DEA38 /* FinancesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinancesTableViewController.swift; sourceTree = "<group>"; };
+		59D365D01EA558FF004DEA38 /* Finances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Finances.swift; sourceTree = "<group>"; };
+		59D365D21EA567F4004DEA38 /* FinancesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinancesTableViewCell.swift; sourceTree = "<group>"; };
 		59D6E3B91E7C412200807C5C /* ClientTourGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourGuideViewController.swift; sourceTree = "<group>"; };
 		59D6E3BB1E7C43C000807C5C /* ClientTourDriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTourDriverViewController.swift; sourceTree = "<group>"; };
 		59DA4D341E757FED00B50A2E /* GuideTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideTable.swift; sourceTree = "<group>"; };
@@ -208,6 +214,7 @@
 		59B760AA1E6DF6B7003C3FD8 /* Guidance */ = {
 			isa = PBXGroup;
 			children = (
+				59D365CC1EA557E2004DEA38 /* FinancesUI */,
 				59FC2B761E8DD08B001E139B /* AboutUI */,
 				59164E101E8635D20089DA4E /* MainTabBarUI */,
 				59164E0B1E8625200089DA4E /* ActivationKeyUI */,
@@ -253,6 +260,15 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		59D365CC1EA557E2004DEA38 /* FinancesUI */ = {
+			isa = PBXGroup;
+			children = (
+				59D365CD1EA55872004DEA38 /* FinancesTableViewController.swift */,
+				59D365D21EA567F4004DEA38 /* FinancesTableViewCell.swift */,
+			);
+			name = FinancesUI;
+			sourceTree = "<group>";
+		};
 		59DA4D3A1E758C9900B50A2E /* GuideUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +298,7 @@
 				59DA4D361E75832B00B50A2E /* DriverTable.swift */,
 				59DA4D381E7586E800B50A2E /* ClientTourTable.swift */,
 				59164E041E8600000089DA4E /* GuidanceTable.swift */,
+				59D365D01EA558FF004DEA38 /* Finances.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -430,6 +447,7 @@
 				59DA4D3C1E758CBD00B50A2E /* GuideTableViewController.swift in Sources */,
 				59FC2B781E8DD0C0001E139B /* AboutTableViewController.swift in Sources */,
 				59DA4D391E7586E800B50A2E /* ClientTourTable.swift in Sources */,
+				59D365D31EA567F4004DEA38 /* FinancesTableViewCell.swift in Sources */,
 				59769BCE1E8B262B0027C66D /* FilterTripDateViewController.swift in Sources */,
 				594377CB1E7496FB00D0E78B /* TourTableViewController.swift in Sources */,
 				59B760AE1E6DF6B7003C3FD8 /* ViewController.swift in Sources */,
@@ -440,6 +458,7 @@
 				59DA4D3E1E758CD300B50A2E /* GuideDetailViewController.swift in Sources */,
 				593B2F371E9148B300EFE264 /* TripDetailViewController.swift in Sources */,
 				59164E121E86361C0089DA4E /* MainTabBarViewController.swift in Sources */,
+				59D365CE1EA55872004DEA38 /* FinancesTableViewController.swift in Sources */,
 				592BECFA1E742EDB00DD10C9 /* ExpensesTable.swift in Sources */,
 				59DA4D431E759ACD00B50A2E /* DriverDetailViewController.swift in Sources */,
 				59164E071E8607BB0089DA4E /* EncryptionUtils.swift in Sources */,
@@ -450,6 +469,7 @@
 				59DA4D411E759ABF00B50A2E /* DriverTableViewController.swift in Sources */,
 				59562E111E79DCB700E6A5F6 /* ClientTourTourViewController.swift in Sources */,
 				598981A61E705F420073C9DA /* ClientsTableViewController.swift in Sources */,
+				59D365D11EA558FF004DEA38 /* Finances.swift in Sources */,
 				59D6E3BC1E7C43C000807C5C /* ClientTourDriverViewController.swift in Sources */,
 				594377CD1E74974100D0E78B /* TourDetailViewController.swift in Sources */,
 				59562E091E7975E600E6A5F6 /* ClientTourTableViewController.swift in Sources */,

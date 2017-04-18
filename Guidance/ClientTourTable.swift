@@ -168,6 +168,26 @@ class ClientTourTable: DbContext {
         return result
     }
     
+    func getClientTours(forLastMonths totalMonths: Int) -> Dictionary<Date, [ClientTour]> {
+        var result = Dictionary<Date, [ClientTour]>()
+        
+        // TODO: Fix this
+        var date = DateUtils.getInitialDayOfPrevMonth(forDate: Date())
+        var count = 0
+        while count < totalMonths {
+            let (initDate, finalDate) = DateUtils.getMonthInterval(forDate: date)
+            let rows = table.filter(self.date >= initDate && self.date < finalDate)
+            
+            let tripList = getAllFromTable(rows)
+            result[date] = tripList
+            
+            count = count + 1
+            date = DateUtils.getInitialDayOfPrevMonth(forDate: date)
+        }
+        
+        return result
+    }
+    
     func addClientTour(_ ct: ClientTour) {
         let insert = table.insert(
             clientId <- ct.clientId,
