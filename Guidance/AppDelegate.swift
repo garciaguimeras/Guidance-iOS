@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 10.0, *) {
             UserNotificationUtils.register(delegate: nil)
             let content = UserNotificationUtils.createUserNotificationContent(title: "Nuevos viajes", message: "Revisa tus viajes para el dia de hoy")
-            UserNotificationUtils.triggerUserNotification(with: "NextTrips", content: content)
+            UserNotificationUtils.triggerUserNotification(withIdentifier: "NextTrips", content: content)
         }
         
         return true

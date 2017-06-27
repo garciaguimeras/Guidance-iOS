@@ -51,6 +51,8 @@
 		59E66B501E96BD900075EC30 /* UserNotificationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E66B4F1E96BD900075EC30 /* UserNotificationUtils.swift */; };
 		59EBF56E1E6FB83F00177E92 /* ClientTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBF56D1E6FB83F00177E92 /* ClientTable.swift */; };
 		59EBF5701E6FB8D100177E92 /* DbContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBF56F1E6FB8D100177E92 /* DbContext.swift */; };
+		59FADFCA1EA64D130015D19A /* MessageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FADFC91EA64D130015D19A /* MessageUtils.swift */; };
+		59FADFCC1EA658C20015D19A /* PhoneUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FADFCB1EA658C20015D19A /* PhoneUtils.swift */; };
 		59FC2B781E8DD0C0001E139B /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FC2B771E8DD0C0001E139B /* AboutTableViewController.swift */; };
 		F098E58DECA8E5EC402475E1 /* Pods_Guidance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5255C2AB3D5741EA415BB95F /* Pods_Guidance.framework */; };
 /* End PBXBuildFile section */
@@ -103,6 +105,8 @@
 		59E66B4F1E96BD900075EC30 /* UserNotificationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationUtils.swift; sourceTree = "<group>"; };
 		59EBF56D1E6FB83F00177E92 /* ClientTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTable.swift; sourceTree = "<group>"; };
 		59EBF56F1E6FB8D100177E92 /* DbContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbContext.swift; sourceTree = "<group>"; };
+		59FADFC91EA64D130015D19A /* MessageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageUtils.swift; sourceTree = "<group>"; };
+		59FADFCB1EA658C20015D19A /* PhoneUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneUtils.swift; sourceTree = "<group>"; };
 		59FC2B771E8DD0C0001E139B /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		A779E67AA3BAFB1C7AD01D27 /* Pods-Guidance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guidance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Guidance/Pods-Guidance.debug.xcconfig"; sourceTree = "<group>"; };
 		E36D88347FEC6EFAAD0B277B /* Pods-Guidance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guidance.release.xcconfig"; path = "Pods/Target Support Files/Pods-Guidance/Pods-Guidance.release.xcconfig"; sourceTree = "<group>"; };
@@ -256,6 +260,8 @@
 				59164E061E8607BB0089DA4E /* EncryptionUtils.swift */,
 				59164E0E1E8634380089DA4E /* NavigationUtils.swift */,
 				59E66B4F1E96BD900075EC30 /* UserNotificationUtils.swift */,
+				59FADFC91EA64D130015D19A /* MessageUtils.swift */,
+				59FADFCB1EA658C20015D19A /* PhoneUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -457,8 +463,10 @@
 				59562E0B1E79761300E6A5F6 /* ClientTourDetailViewController.swift in Sources */,
 				59DA4D3E1E758CD300B50A2E /* GuideDetailViewController.swift in Sources */,
 				593B2F371E9148B300EFE264 /* TripDetailViewController.swift in Sources */,
+				59FADFCC1EA658C20015D19A /* PhoneUtils.swift in Sources */,
 				59164E121E86361C0089DA4E /* MainTabBarViewController.swift in Sources */,
 				59D365CE1EA55872004DEA38 /* FinancesTableViewController.swift in Sources */,
+				59FADFCA1EA64D130015D19A /* MessageUtils.swift in Sources */,
 				592BECFA1E742EDB00DD10C9 /* ExpensesTable.swift in Sources */,
 				59DA4D431E759ACD00B50A2E /* DriverDetailViewController.swift in Sources */,
 				59164E071E8607BB0089DA4E /* EncryptionUtils.swift in Sources */,

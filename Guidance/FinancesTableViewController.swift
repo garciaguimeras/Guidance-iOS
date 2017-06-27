@@ -55,11 +55,11 @@ class FinancesTableViewController: UITableViewController {
         let finances = financesList![indexPath.section]
         let total = finances.tripProfits - finances.guideCommissions - finances.driverCommissions - finances.otherExpenses
         
-        cell.tripProfitsLabel!.text = String(finances.tripProfits)
-        cell.guideCommissionsLabel!.text = String(finances.guideCommissions)
-        cell.driverCommissionsLabel!.text = String(finances.driverCommissions)
-        cell.otherExpensesLabel!.text = String(finances.otherExpenses)
-        cell.totalLabel!.text = String(total)
+        cell.tripProfitsLabel!.text = String(format: "%.2f", finances.tripProfits)
+        cell.guideCommissionsLabel!.text = String(format: "%.2f", finances.guideCommissions)
+        cell.driverCommissionsLabel!.text = String(format: "%.2f", finances.driverCommissions)
+        cell.otherExpensesLabel!.text = String(format: "%.2f", finances.otherExpenses)
+        cell.totalLabel!.text = String(format: "%.2f", total)
         
         return cell
     }

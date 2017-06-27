@@ -14,9 +14,7 @@ class ClientTourDetailViewController: UITableViewController {
     @IBOutlet weak var fromOutsiderCompanySwitch: UISwitch!
     @IBOutlet weak var commentsTextField: UITextField!
     @IBOutlet weak var guideCommissionTextField: UITextField!
-    @IBOutlet weak var notifyGuideSwitch: UISwitch!
     @IBOutlet weak var driverCommissionTextField: UITextField!
-    @IBOutlet weak var notifyDriverSwitch: UISwitch!
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var tourLabel: UILabel!
@@ -44,13 +42,11 @@ class ClientTourDetailViewController: UITableViewController {
         driver = nil
         
         if ct != nil {
-            priceTextField.text = String(ct!.price)
+            priceTextField.text = String(format: "%.2f", ct!.price)
             fromOutsiderCompanySwitch.isOn = ct!.fromOutsiderCompany
             commentsTextField.text = ct!.comments
-            guideCommissionTextField.text = String(ct!.guideCommission)
-            notifyGuideSwitch.isOn = ct!.notifyGuide
-            driverCommissionTextField.text = String(ct!.driverCommission)
-            notifyDriverSwitch.isOn = ct!.notifyDriver
+            guideCommissionTextField.text = String(format: "%.2f", ct!.guideCommission)
+            driverCommissionTextField.text = String(format: "%.2f", ct!.driverCommission)
             
             date = ct!.date as Date?
             tour = ct!.tourId != 0 ? TourTable().getTourById(ct!.tourId) : nil
@@ -97,9 +93,7 @@ class ClientTourDetailViewController: UITableViewController {
             ct!.fromOutsiderCompany = fromOutsiderCompanySwitch.isOn
             ct!.comments = commentsTextField.text!
             ct!.guideCommission = Double(guideCommissionTextField.text!)!
-            ct!.notifyGuide = notifyGuideSwitch.isOn
             ct!.driverCommission = Double(driverCommissionTextField.text!)!
-            ct!.notifyDriver = notifyDriverSwitch.isOn
         }
         
         if segue.identifier == "setTripDate" {
@@ -153,6 +147,79 @@ class ClientTourDetailViewController: UITableViewController {
         let viewController = segue.source as? ClientTourDriverViewController
         driver = viewController?.selectedDriver
         driverLabel!.text = driver != nil ? driver!.name : "No"
+    }
+    
+    @IBAction func sendSmsToGuide(sender: Any) {
+        if guide == nil {
+            showAlert(withMessage: "No hay guia seleccionado")
+            return
+        }
+        if guide!.mobile == "" {
+            showAlert(withMessage: "El guia no tiene telefono")
+            return
+        }
+        
+        sendSms(to: guide!.mobile, withText: "")
+    }
+    
+    @IBAction func sendSmsToDriver(sender: Any) {
+        if driver == nil {
+            showAlert(withMessage: "No hay chofer seleccionado")
+            return
+        }
+        if driver!.mobile == "" {
+            showAlert(withMessage: "El chofer no tiene telefono")
+            return
+        }
+        
+        sendSms(to: driver!.mobile, withText: "")
+    }
+    
+    @IBAction func callGuide(sender: Any) {
+        if guide == nil {
+            showAlert(withMessage: "No hay guia seleccionado")
+            return
+        }
+        if guide!.mobile == "" {
+            showAlert(withMessage: "El guia no tiene telefono")
+            return
+        }
+        
+        call(phone: guide!.mobile)
+    }
+    
+    @IBAction func callDriver(sender: Any) {
+        if driver == nil {
+            showAlert(withMessage: "No hay chofer seleccionado")
+            return
+        }
+        if driver!.mobile == "" {
+            showAlert(withMessage: "El chofer no tiene telefono")
+            return
+        }
+        
+        call(phone: driver!.mobile)
+    }
+    
+    func showAlert(withMessage message: String) {
+        let alert = UIAlertView()
+        alert.message = message
+        alert.addButton(withTitle: "Ok")
+        alert.show()
+    }
+    
+    func sendSms(to recipient: String, withText text: String) {
+        let result = MessageUtils.sendMessage(controller: self, recipient: recipient, text: text)
+        if !result {
+            showAlert(withMessage: "No se puede enviar mensajes desde este dispositivo")
+        }
+    }
+    
+    func call(phone: String) {
+        let result = PhoneUtils.callPhone(phone)
+        if !result {
+            showAlert(withMessage: "No se pueden hacer llamadas desde este dispositivo")
+        }
     }
 
 }

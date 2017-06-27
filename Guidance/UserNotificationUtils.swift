@@ -43,7 +43,7 @@ class UserNotificationUtils {
         })
     }
     
-    class func triggerUserNotification(with identifier: String, content: UNMutableNotificationContent) {
+    class func triggerUserNotification(withIdentifier identifier: String, content: UNMutableNotificationContent) {
         let dateComponents = DateComponents(hour: 8, minute: 0)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)

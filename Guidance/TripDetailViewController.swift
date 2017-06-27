@@ -50,10 +50,10 @@ class TripDetailViewController: UITableViewController {
             dateLabel!.text = df.string(from: clientTour!.date!)
             guideLabel!.text = guide != nil ? guide!.name : "Sin guia"
             driverLabel!.text = driver != nil ? driver!.name : "Sin chofer"
-            priceLabel!.text = String(clientTour!.price)
-            guideCommissionLabel!.text = String(clientTour!.guideCommission)
-            driverCommissionLabel!.text = String(clientTour!.driverCommission)
-            totalLabel!.text = String(total)
+            priceLabel!.text = String(format: "%.2f", clientTour!.price)
+            guideCommissionLabel!.text = String(format: "%.2f", clientTour!.guideCommission)
+            driverCommissionLabel!.text = String(format: "%.2f", clientTour!.driverCommission)
+            totalLabel!.text = String(format: "%.2f", total)
             payGuideButton!.isEnabled = !clientTour!.payGuide
             payDriverButton!.isEnabled = !clientTour!.payDriver
         }

@@ -30,7 +30,7 @@ class ExpensesDetailViewController: UITableViewController {
         
         if exp != nil {
             descriptionTextField.text = exp!.description
-            amountTextField.text = String(exp!.amount)
+            amountTextField.text = String(format: "%.2f", exp!.amount)
             date = exp!.date as Date?
         }
         

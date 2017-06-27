@@ -54,7 +54,8 @@ class ExpensesTableViewController: UITableViewController, UISearchBarDelegate {
         
         let df = DateFormatter()
         df.dateFormat = "dd/MM/yyyy"
-        cell.detailTextLabel?.text = "$\(exp.amount) el dia \(df.string(from: exp.date! as Date))"
+        let amount = String(format: "%.2f", exp.amount)
+        cell.detailTextLabel?.text = "$\(amount) el dia \(df.string(from: exp.date! as Date))"
         
         return cell
     }

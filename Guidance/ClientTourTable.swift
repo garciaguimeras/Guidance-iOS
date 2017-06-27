@@ -21,9 +21,6 @@ class ClientTour {
     var driverCommission: Double = 0
     var guideCommission: Double = 0
     
-    var notifyDriver: Bool = false
-    var notifyGuide: Bool = false
-    
     var payDriver: Bool = false
     var payGuide: Bool = false
     
@@ -46,9 +43,6 @@ class ClientTourTable: DbContext {
     var driverCommission: Expression<Double>
     var guideCommission: Expression<Double>
     
-    var notifyDriver: Expression<Bool>
-    var notifyGuide: Expression<Bool>
-    
     var payDriver: Expression<Bool>
     var payGuide: Expression<Bool>
     
@@ -68,9 +62,6 @@ class ClientTourTable: DbContext {
         price = Expression<Double>("price")
         driverCommission = Expression<Double>("driverCommission")
         guideCommission = Expression<Double>("guideCommission")
-        
-        notifyDriver = Expression<Bool>("notifyDriver")
-        notifyGuide = Expression<Bool>("notifyGuide")
         
         payDriver = Expression<Bool>("payDriver")
         payGuide = Expression<Bool>("payGuide")
@@ -93,8 +84,6 @@ class ClientTourTable: DbContext {
             t.column(price)
             t.column(driverCommission)
             t.column(guideCommission)
-            t.column(notifyDriver)
-            t.column(notifyGuide)
             t.column(payDriver)
             t.column(payGuide)
             t.column(fromOutsiderCompany)
@@ -117,8 +106,6 @@ class ClientTourTable: DbContext {
             ct.price = item[price]
             ct.driverCommission = item[driverCommission]
             ct.guideCommission = item[guideCommission]
-            ct.notifyDriver = item[notifyDriver]
-            ct.notifyGuide = item[notifyGuide]
             ct.payDriver = item[payDriver]
             ct.payGuide = item[payGuide]
             ct.fromOutsiderCompany = item[fromOutsiderCompany]
@@ -197,8 +184,6 @@ class ClientTourTable: DbContext {
             price <- ct.price,
             driverCommission <- ct.driverCommission,
             guideCommission <- ct.guideCommission,
-            notifyDriver <- ct.notifyDriver,
-            notifyGuide <- ct.notifyGuide,
             payDriver <- ct.payDriver,
             payGuide <- ct.payGuide,
             fromOutsiderCompany <- ct.fromOutsiderCompany,
@@ -218,8 +203,6 @@ class ClientTourTable: DbContext {
             price <- ct.price,
             driverCommission <- ct.driverCommission,
             guideCommission <- ct.guideCommission,
-            notifyDriver <- ct.notifyDriver,
-            notifyGuide <- ct.notifyGuide,
             payDriver <- ct.payDriver,
             payGuide <- ct.payGuide,
             fromOutsiderCompany <- ct.fromOutsiderCompany,
